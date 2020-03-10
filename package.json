@@ -1,0 +1,46 @@
+{
+  "name": "travel-testing-en",
+  "version": "1.0.0",
+  "description": "Web page implemented with MERN stack with own CMS, authentifications methods(login, registration, receiving password via email, changing passwords) using nodemailer and bcryptjs, crypto and jsonwebtoken, changable content with image uploading using gridfs and multer packages. Used React functional components, redux, axios and mongoDB Atlas Cluster. ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wiktorkujawa/travel-agency-page.git"
+  },
+  "keywords": [
+    "travel",
+    "agency",
+    "tourist",
+    "trips"
+  ],
+  "author": "Wiktor Kujawa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wiktorkujawa/travel-agency-page/issues"
+  },
+  "homepage": "https://github.com/wiktorkujawa/travel-agency-page#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^5.1.0",
+    "config": "^3.3.0",
+    "express": "^4.17.1",
+    "gridfs-stream": "^1.1.1",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.9.4",
+    "multer": "^1.4.2",
+    "multer-gridfs-storage": "^4.0.2",
+    "nodemailer": "^6.4.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
