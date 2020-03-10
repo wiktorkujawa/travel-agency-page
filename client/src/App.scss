@@ -1,0 +1,458 @@
+$navbar-length-desktop: 7.4rem;
+$navbar-length-mobile: 17.5rem;
+$footer-height: 20rem;
+$footer-height-md: 28rem;
+$footer-height-xs: 46rem;
+$side-margin: 3rem;
+$side-padding:1rem;
+$nav-type: 4rem;
+@import '~bootstrap/scss/bootstrap.scss';
+
+
+$colors: (
+  footer-color: #2ECC40,
+  accent: #FFF5BB,
+  body-color: #F1F1F1,
+  nav-color: #2ECC40,
+  hover-nav-color: darken(#2ECC40,10%),
+  main-nav-color: white,
+  hover-main-nav-color: darken(white,20%),
+  icon-color: #FF851B,
+  shadow-box-color: #010101
+);
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+@function calc-difference($value1, $value2) {
+  @return $value1 - $value2;
+}
+
+@function calc-sum($value1, $value2) {
+  @return $value1 + $value2;
+}
+
+@function color($color-name) {
+  @return map-get($colors, $color-name)
+};
+
+
+
+.content-margin {
+  margin-top: 3rem;
+  padding: $side-padding;
+}
+@include media-breakpoint-up(sm){
+  .content-wrap {
+    padding-bottom: $footer-height-md !important;
+  }
+  .footer {
+    height: $footer-height-md !important;
+  }
+  .footer-contactSection{
+    margin-top: 0rem !important;
+  }
+}
+@include media-breakpoint-up(md){
+    .main-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2000;
+    opacity: 0.9;
+    };
+    .footer {
+      flex-direction: row !important;
+      height: $footer-height !important;
+      align-items: center !important;
+    }
+
+    .open-offer-modal {
+      margin-top: $navbar-length-desktop;
+    }
+
+    .footer-logo {
+      order:2 !important;
+      margin-top: 0rem !important;
+      margin-right:-4rem;
+      margin-left:-3rem;
+    }
+    .footer-suggested-trips{
+      order:1 !important;
+      margin-top: 0rem !important;
+    }
+    .footer-contactSection{
+      order:3 !important;
+    }
+
+
+
+   .content-margin {
+     margin-right: $side-margin;
+     margin-left: $side-margin;
+   };
+
+   html {
+    scroll-padding-top: $navbar-length-desktop !important;
+   }
+   .public-route {
+    padding-top: $navbar-length-desktop !important;
+   }
+   .slide-image{
+     height: calc(100vh - #{$navbar-length-desktop}) !important;
+   }
+   .nav-border {
+    border-right: .5px groove #DFCFBE;
+  }
+  .align-items-center{
+    justify-content: space-between !important;
+    flex-wrap: nowrap;
+  }
+  .input-location {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .content-wrap {
+    padding-bottom: $footer-height !important;
+  }
+  }
+
+  .content-wrap {
+  padding-bottom: $footer-height-xs;
+}
+
+
+.add-item {
+    position: absolute;
+    left: 50%;
+    margin-left: -1.5rem;
+    bottom: 0%;
+    z-index: 3000;
+}
+
+.admin-modal-content {
+  overflow-y: scroll;
+  width: 100%;
+  background-color: #DDDDDD;
+}
+
+body {
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/a/aa/Ruiny_zamku_w_Kole_-_ZJ001.jpg);
+  // background-color: lightblue;
+}
+
+
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.line-clamp {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.fade-exit-active {
+  opacity: 0.01;
+  transition: opacity 1000ms ease-in
+}
+
+.slide-layout {
+  position: relative;
+}
+.slide-modify {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1000;
+}
+
+.slide-image {
+  width: 100%;
+  margin:0 auto;
+  height: calc(100vh - #{$navbar-length-mobile});
+}
+
+.price {
+  position: absolute;
+  right:0; bottom: 0;
+  background: color(icon-color);
+  color: #fff;
+  padding: 5px 10px 5px 10px;
+  font-weight: bold;
+  font-size: 2em;
+  z-index: 1000;
+}
+
+.scroll {
+  position: absolute;
+  right:50%; bottom: 0;
+  // background: color(icon-color);
+  opacity: 1.0;
+  // padding: 5px 10px 5px 10px;
+  font-weight: bold;
+  font-size: 2em;
+  z-index: 1000;
+}
+
+.footer-suggested-trips {
+  border-radius: 1rem;
+  padding: 0 1rem;
+  background-color: #F1F7F9;
+  order:1;
+}
+
+.footer-list {
+  display: inline-block;
+  vertical-align: top;
+  padding-left: 0;
+}
+
+.footer-logo {
+  order:3;
+  margin-top: -5rem;
+}
+.footer-contactSection {
+  margin-top: -3rem;
+  order:2;
+  padding: 0 2rem;
+  flex-shrink:0.5;
+}
+.title {
+  position: absolute;
+  right:42%; bottom: 10%;
+  background: color(icon-color);
+  color: #fff;
+  padding: 5px 10px 5px 10px;
+  font-weight: bold;
+  font-size: 1.5em;
+  z-index: 1000;
+}
+
+.card-image{
+  transition: transform 1s ease;
+  &:hover{
+    transform: scale(1.5);
+  }
+}
+
+
+
+
+
+
+.navbar-brand {
+  padding-top:0rem;
+  padding-bottom:0rem;
+}
+
+.navbar-light {
+  padding: 0rem 1rem !important;
+}
+
+
+.page-container {
+  padding-left: 0 ;
+  padding-right: 0 ;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+}
+
+
+.align-items-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: color(icon-color);
+}
+
+
+.choose-offer-type{
+  width:200px;
+  &:hover {
+    background-color: color(hover-nav-color) !important;
+    border-radius: 15px;
+  }
+}
+
+.checked-type {
+  color: #111111 !important;
+  border-radius: 15px !important;
+  &:focus {
+    box-shadow: inset 0px 0px 20px 0px color(shadow-box-color) !important;
+  }
+}
+
+.item-main{
+  background-color: color(main-nav-color) !important;
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+  color: #111111;
+  width: 100%;
+  &:hover {
+    background-color:color(hover-main-nav-color) !important;
+    border-radius: 15px 15px 0 0;
+    color: #111111;
+  }
+}
+
+
+.filter-nav{
+  background-color: color(nav-color);
+  border-radius: 0 0 15px 15px;
+  padding: 0 1rem;
+}
+
+.admin-nav{
+  background-color: color(nav-color);
+  border-radius: 15px 0 0 15px;
+  padding: 0 0.4rem;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.admin-container {
+  display: flex;
+  flex-direction: row; 
+  height: 100vh;
+  min-height: 32rem;
+  padding: 0.5rem
+}
+
+.align-items-left {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  margin-right: .5rem;
+  text-align: left;
+}
+
+.social-card {
+  position: fixed;
+  right: 0;
+  padding-right: 0.5rem;
+  top: 50%;
+  z-index: 2000;
+}
+
+a {
+   outline: 0;
+}
+
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background:color(footer-color);
+  position: absolute;
+  bottom: 0;
+  height: $footer-height-xs;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.list-group .list-group-item>li:last-child{
+  margin-bottom: 0 !important;
+}
+
+.author-footer {
+  background-color: color(shadow-box-color);
+  box-shadow: inset 0px 0px 20px 0px white;
+  position: absolute;
+  color: white;
+  bottom: 0;
+}
+
+.fa-ul i{
+  color:#366E91;
+}
+.last-offers {
+  text-align: center;
+  background-color: #DDDDDD;
+  font-size: 2em;
+  padding: 0.5em 0;
+  box-shadow: inset 0px 0px 20px 0px white;
+ }
+
+ .offer-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  height: 4rem;
+ }
+
+.insurance-wrapper {
+  margin-bottom: calc-sum(-$navbar-length-desktop,-5rem);
+}
+.insurance-image{
+  height: calc(100vh);
+  padding-bottom: calc-sum($navbar-length-desktop,5rem);
+}
+
+/* styles for '...' */ 
+.block-with-text {
+  color:#111111;
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative; 
+  /* use this value to count block height */
+  line-height: 1.2em;
+  font-size: 0.9em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 3.6em; 
+  /* fix problem when last visible word doesn't adjoin right side  */
+  text-align: justify;  
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+}
+/* create the ... */
+.block-with-text:before {
+  /* points in the end */
+  content: '...';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of block */
+  right: 0;
+  bottom: 0;
+}
+/* hide ... if we have text, which is less than or equal to max lines */
+.block-with-text:after {
+  /* points in the end */
+  content: '';
+  /* absolute position */
+  position: absolute;
+  /* set position to right bottom corner of text */
+  right: 0;
+  /* set width and height */
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  /* bg color = bg color under block */
+  background: white;
+}
+
+.shadow-box {
+  box-shadow: inset 0px 0px 20px 0px color(shadow-box-color);
+}
