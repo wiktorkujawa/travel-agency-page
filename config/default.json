@@ -1,0 +1,6 @@
+{
+  "mongoURI": "add_your_mongo_url",
+  "jwtSecret": "sl_myJwtSecret",
+  "email": "add_email",
+  "password": "add_email_password"
+}
