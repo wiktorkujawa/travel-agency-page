@@ -36,21 +36,6 @@ router.get('/', (req, res) => {
     .then(slides => res.json(slides))
 });
 
-// @route GET /files
-// @desc  Display all files in JSON
-// router.get('/files', (req, res) => {
-//   gfs.files.find().toArray((err, files) => {
-//     // Check if files
-//     if (!files || files.length === 0) {
-//       return res.status(404).json({
-//         err: 'No files exist'
-//       });
-//     }
-
-//     // Files exist
-//     return res.json(files);
-//   });
-// });
 
 // @route POST /upload
 // @desc  Uploads file and object to DB

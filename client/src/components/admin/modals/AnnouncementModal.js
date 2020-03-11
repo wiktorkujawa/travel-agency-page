@@ -54,38 +54,38 @@ const AnnouncementModal = ({ addAnnouncement }) => {
         size="md"
         onClick={toggle}
         style={{ zIndex: "1000" }}
-      >Dodaj ogłoszenie
+      >Add announcement
           </Button>
 
       <Modal
         isOpen={modal}
         toggle={toggle}
       >
-        <ModalHeader toggle={toggle}>Dodaj do listy ogłoszeń</ModalHeader>
+        <ModalHeader toggle={toggle}>Add to announcement list</ModalHeader>
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="name">Nagłówek</Label>
+              <Label for="name">Header</Label>
               <Input
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Dodaj nagłówek"
+                placeholder="Add header..."
                 onChange={onChange}
               />
-              <Label for="content">Zawartość</Label>
+              <Label for="content">Content</Label>
               <Input
                 type="textarea"
                 name="content"
                 id="content"
-                placeholder="Dodaj zawartość ogłoszenia"
+                placeholder="Add content..."
                 onChange={onChange}
               />
               <Button
                 color="dark"
                 style={{ marginTop: '2rem' }}
                 block>
-                Dodaj ogłoszenie
+                Add announcement
                 </Button>
             </FormGroup>
           </Form>

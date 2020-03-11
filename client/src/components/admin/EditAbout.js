@@ -57,14 +57,14 @@ const About = ({ getContent, contents, updateContent }) => {
               name="name"
               id="content"
               defaultValue={name}
-              placeholder="Dodaj treść(można używać znaczników html)"
+              placeholder="Add content(using html allowed)"
               onChange={onChange}
             />
             <Button
               color="dark"
 
               block>
-              Zmień treść
+              Change content
                 </Button>
           </FormGroup>
         </Form>

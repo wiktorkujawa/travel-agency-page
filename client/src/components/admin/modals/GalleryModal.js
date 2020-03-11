@@ -67,7 +67,7 @@ const GalleryModal = ({ addPhoto }) => {
         size="md"
         onClick={toggle}
         style={{ zIndex: "1000" }}
-      >Dodaj zdjęcia
+      >Add photos
         </Button>
 
 
@@ -75,24 +75,24 @@ const GalleryModal = ({ addPhoto }) => {
         isOpen={modal}
         toggle={toggle}
       >
-        <ModalHeader toggle={toggle}>Dodaj zdjęcia do galerii</ModalHeader>
+        <ModalHeader toggle={toggle}>Add photos to gallery</ModalHeader>
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="tripLocation">Lokalizacja</Label>
+              <Label for="tripLocation">Location</Label>
               <Input
                 type="text"
                 name="tripLocation"
                 id="tripLocation"
-                placeholder="Dodaj lokalizację zdjęć..."
+                placeholder="Add photo location..."
                 onChange={onChangeText}
               />
-              <Label for="description">Opis zdjęcia</Label>
+              <Label for="description">Description</Label>
               <Input
                 type="text"
                 name="description"
                 id="description"
-                placeholder="Opisz zdjęcie..."
+                placeholder="Describe the photo..."
                 onChange={onChangeText}
               />
             </FormGroup>
@@ -101,7 +101,7 @@ const GalleryModal = ({ addPhoto }) => {
               name="photo"
               id="photo"
               multiple
-              label="Dodaj zdjęcie/zdjęcia..."
+              label="Add photo/photos..."
               onChange={onChangeFile}
             />
 

@@ -72,7 +72,7 @@ const EditSlide = ({ getSlides, deleteSlide, slides }) => {
     <CardGroup>
       {!(Array.isArray(slides) && slides.length) ?
         <Card className="mt-5 mb-5">
-          <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>chwilowo brak zdjęć</CardBody>
+          <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no images</CardBody>
         </Card>
         :
         slides.map(({ _id, files_id, src, header, caption }, index) => (
@@ -106,33 +106,33 @@ const EditSlide = ({ getSlides, deleteSlide, slides }) => {
                 size="md"
                 onClick={toggle(index)}
               >
-                Zmień opis slajdu
+                Change slide description
               </Button>
 
               <Modal
                 isOpen={modal[index]}
                 toggle={toggle(index)}
               >
-                <ModalHeader toggle={toggle(index)}>Opis zdjęcia</ModalHeader>
+                <ModalHeader toggle={toggle(index)}>Image description</ModalHeader>
                 <ModalBody>
 
                   <Form onSubmit={onSubmit(slideDescription, index, _id)}>
                     <FormGroup>
-                      <Label for="header">Nagłówek</Label>
+                      <Label for="header">Header</Label>
                       <Input
                         type="text"
                         name="header"
                         id="header"
                         defaultValue={header}
-                        placeholder="Dodaj nagłówek slajdu..."
+                        placeholder="Add slide header..."
                         onChange={onChange(slideDescription, index)}
                       />
-                      <Label for="caption">Podpis</Label>
+                      <Label for="caption">Caption</Label>
                       <Input
                         type="text"
                         name="caption"
                         id="caption"
-                        placeholder="Dodaj podpis slajdu..."
+                        placeholder="Add slide caption..."
                         defaultValue={caption}
                         className="mb-3"
                         onChange={onChange(slideDescription, index)}
@@ -143,7 +143,7 @@ const EditSlide = ({ getSlides, deleteSlide, slides }) => {
                       color="dark"
                       style={{ marginTop: '2rem' }}
                       block>
-                      Zmień opisy zdjęcia
+                      Change slide description
                   </Button>
                   </Form>
                 </ModalBody>

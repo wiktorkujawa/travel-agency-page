@@ -62,33 +62,33 @@ const SliderModal = ({ addSlide }) => {
         color="info"
         size="md"
         onClick={toggle}
-      >Dodaj slajd
+      >Add slide
         </Button>
 
       <Modal
         isOpen={modal}
         toggle={toggle}
       >
-        <ModalHeader toggle={toggle}>Dodaj nowe slajdy</ModalHeader>
+        <ModalHeader toggle={toggle}>Add new slides</ModalHeader>
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
 
-              <Label for="header">Nagłówek</Label>
+              <Label for="header">Header</Label>
               <Input
                 type="text"
                 name="header"
                 id="header"
-                placeholder="Dodaj nagłówek slajdu..."
+                placeholder="Add header..."
                 className="mb-3"
                 onChange={onChangeText}
               />
-              <Label for="caption">Podpis</Label>
+              <Label for="caption">Caption</Label>
               <Input
                 type="text"
                 name="caption"
                 id="caption"
-                placeholder="Dodaj podpis slajdu..."
+                placeholder="Add caption..."
                 className="mb-3"
                 onChange={onChangeText}
               />
@@ -97,7 +97,7 @@ const SliderModal = ({ addSlide }) => {
                 type="file"
                 name="slide"
                 id="slide"
-                label="Dodaj obraz slajdu..."
+                label="Add image..."
                 onChange={onChangeImage}
               />
 
@@ -106,7 +106,7 @@ const SliderModal = ({ addSlide }) => {
                 disabled={imageData === null}
                 style={{ marginTop: '2rem' }}
                 block>
-                Dodaj slajd
+                Add slide
                 </Button>
             </FormGroup>
           </Form>

@@ -54,38 +54,38 @@ const QuestionModal = ({ addQuestion }) => {
         size="md"
         onClick={toggle}
         style={{ zIndex: "1000" }}
-      >Dodaj pytanie
+      >Add question
           </Button>
 
       <Modal
         isOpen={modal}
         toggle={toggle}
       >
-        <ModalHeader toggle={toggle}>Dodaj nowe pytanie</ModalHeader>
+        <ModalHeader toggle={toggle}>Add new question</ModalHeader>
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="question">Pytanie</Label>
+              <Label for="question">Question</Label>
               <Input
                 type="text"
                 name="question"
                 id="question"
-                placeholder="Dodaj pytanie..."
+                placeholder="Add question..."
                 onChange={onChange}
               />
-              <Label for="answer">Odpowiedź</Label>
+              <Label for="answer">Answer</Label>
               <Input
                 type="text"
                 name="answer"
                 id="answer"
-                placeholder="Dodaj odpowiedź na pytanie..."
+                placeholder="Add answer..."
                 onChange={onChange}
               />
               <Button
                 color="dark"
                 style={{ marginTop: '2rem' }}
                 block>
-                Dodaj pytanie i odpowiedź
+                Add question and answer
                 </Button>
             </FormGroup>
           </Form>

@@ -57,7 +57,7 @@ const QuestionPage = ({ getQuestions, deleteQuestion, questions, updateQuestion 
       <TransitionGroup>
         {!(Array.isArray(questions) && questions.length) ?
           < CSSTransition timeout={500} classNames="fade" >
-            <ListGroupItem style={{ borderRadius: "20px", textAlign: "center", fontStyle: "italic" }}>Sekcja FAQ zostanie uzupełniona wkrótce</ListGroupItem>
+            <ListGroupItem style={{ borderRadius: "20px", textAlign: "center", fontStyle: "italic" }}>FAQ section will be finished soon</ListGroupItem>
           </CSSTransition>
           : questions.map(({ _id, question, answer }, index) => (
             < CSSTransition key={_id} timeout={500} classNames="fade" >
@@ -78,29 +78,29 @@ const QuestionPage = ({ getQuestions, deleteQuestion, questions, updateQuestion 
                       onClick={onDeleteClick.bind(this, _id)}
                     >&times;
                   </Button>
-                    <Label for="question">Pytanie</Label>
+                    <Label for="question">Question</Label>
                     <Input
                       type="text"
                       name="question"
                       id="question"
                       defaultValue={question}
-                      placeholder="Dodaj pytanie..."
+                      placeholder="Add question..."
                       onChange={onChange(questionName, index)}
                     />
-                    <Label for="answer">Odpowiedź</Label>
+                    <Label for="answer">Answer</Label>
                     <Input
                       type="textarea"
                       name="answer"
                       id="answer"
                       defaultValue={answer}
-                      placeholder="Dodaj odpowiedź..."
+                      placeholder="Add answer..."
                       onChange={onChange(questionName, index)}
                     />
                     <Button
                       color="dark"
                       style={{ marginTop: '2rem' }}
                       block>
-                      Zmień pytanie lub odpowiedź
+                      Change question or answer
                 </Button>
                   </FormGroup>
                 </Form>

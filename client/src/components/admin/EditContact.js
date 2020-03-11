@@ -54,13 +54,13 @@ const AppNavbar = ({ getContact, contacts, updateContact }) => {
             <FormGroup >
               <div className="input-location mt-3" >
                 <div >
-                  <Label for="contact">Godziny pracy</Label>
+                  <Label for="contact">Work hours</Label>
                   <Input
                     type="textarea"
                     name="workTime"
                     id="contact"
                     defaultValue={workTime}
-                    placeholder="Zmień godziny pracy..."
+                    placeholder="Change work hours..."
                     onChange={onChange}
                   />
                   <Label for="contact">Email</Label>
@@ -69,36 +69,36 @@ const AppNavbar = ({ getContact, contacts, updateContact }) => {
                     name="email"
                     id="contact"
                     defaultValue={email}
-                    placeholder="Zmień adres email..."
+                    placeholder="Change email address..."
                     onChange={onChange}
                   />
                 </div>
                 <div>
-                  <Label for="contact">Numery telefonów</Label>
+                  <Label for="contact">Phone numbers</Label>
                   <Input
                     type="textarea"
                     name="phoneNumber"
                     id="contact"
                     defaultValue={phoneNumber}
-                    placeholder="Wprowadź numery telefonów..."
+                    placeholder="Insert phone numbers..."
                     onChange={onChange}
                   />
-                  <Label for="contact">Adres biura </Label>
+                  <Label for="contact">Office location</Label>
                   <Input
                     type="textarea"
                     name="address"
                     id="contact"
                     defaultValue={address}
-                    placeholder="Wprowadź adres biura..."
+                    placeholder="Insert office location..."
                     onChange={onChange}
                   />
                 </div>
               </div>
               <Button
                 color="dark"
-                style={{ maxWidth:"30rem", margin:"0 auto" }}
+                style={{ maxWidth: "30rem", margin: "0 auto" }}
                 block>
-                Zatwierdź zmiany
+                Confirm changes
     </Button>
             </FormGroup>
           </Form>

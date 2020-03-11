@@ -45,10 +45,10 @@ const AnnouncementPage = ({ getAnnouncements, deleteAnnouncement, announcements,
         {!(Array.isArray(announcements) && announcements.length) ?
           < CSSTransition timeout={500} classNames="fade" >
             <ListGroupItem style={{ borderRadius: "20px", textAlign: "center", fontStyle: "italic" }} className="content-margin">
-              chwilowo brak ofert w tej kategorii
+              Temporary no offers in this category
             </ListGroupItem>
           </CSSTransition>
-          : announcements.map(({ _id, name, content, date }, index) => (
+          : announcements.map(({ _id, name, content }, index) => (
             < CSSTransition key={_id} timeout={500} classNames="fade" >
               <ListGroupItem style={{ borderRadius: "20px" }} className="content-margin" key={_id}>
                 <Form onSubmit={e => {
@@ -76,29 +76,29 @@ const AnnouncementPage = ({ getAnnouncements, deleteAnnouncement, announcements,
                       onClick={onDeleteClick.bind(this, _id)}
                     >&times;
               </Button>
-                    <Label for="name">Nagłówek</Label>
+                    <Label for="name">Header</Label>
                     <Input
                       type="text"
                       name="name"
                       id="name"
                       defaultValue={name}
-                      placeholder="Dodaj nagłówek ogłoszenia..."
+                      placeholder="Add header..."
                       onChange={onChange(announcementName, index)}
                     />
-                    <Label for="content">Zawartość ogłoszenia</Label>
+                    <Label for="content">Content</Label>
                     <Input
                       type="textarea"
                       name="content"
                       id="content"
                       defaultValue={content}
-                      placeholder="Dodaj zawartość ogłoszenia..."
+                      placeholder="Add content..."
                       onChange={onChange(announcementName, index)}
                     />
                     <Button
                       color="dark"
                       style={{ marginTop: '2rem' }}
                       block>
-                      Zmień ogłoszenie
+                      Change announcement
             </Button>
                   </FormGroup>
                 </Form>

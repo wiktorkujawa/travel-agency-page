@@ -75,7 +75,7 @@ const GalleryPage = ({ deletePhoto, photos, updatePhoto, getPhotos }) => {
     <CardGroup>
       {!(Array.isArray(photos) && photos.length) ?
         <Card className="mt-5 mb-5">
-          <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>chwilowo brak zdjęć</CardBody>
+          <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no photos</CardBody>
         </Card>
         :
         photos.map(({ _id, files_id, image, tripLocation, description }, index) => (
@@ -110,34 +110,33 @@ const GalleryPage = ({ deletePhoto, photos, updatePhoto, getPhotos }) => {
                 size="md"
                 onClick={toggle(index)}
               >
-                Zmień opis zdjęcia
+                Change photo description
               </Button>
 
               <Modal
                 isOpen={modal[index]}
                 toggle={toggle(index)}
-                className="open-modal"
               >
-                <ModalHeader toggle={toggle(index)}>Opis zdjęcia</ModalHeader>
+                <ModalHeader toggle={toggle(index)}>Photo description</ModalHeader>
                 <ModalBody>
 
                   <Form onSubmit={onSubmit(photoDescription, index, _id)}>
                     <FormGroup>
-                      <Label for="tripLocation">Lokalizacja</Label>
+                      <Label for="tripLocation">Location</Label>
                       <Input
                         type="text"
                         name="tripLocation"
                         id="tripLocation"
                         defaultValue={tripLocation}
-                        placeholder="Dodaj lokalizację zdjęcia..."
+                        placeholder="Add photo location..."
                         onChange={onChange(photoDescription, index)}
                       />
-                      <Label for="description">Opis zdjęcia</Label>
+                      <Label for="description">Photo description</Label>
                       <Input
                         type="text"
                         name="description"
                         id="description"
-                        placeholder="Opisz zdjęcie..."
+                        placeholder="Describe the photo..."
                         defaultValue={description}
                         className="mb-3"
                         onChange={onChange(photoDescription, index)}
@@ -148,7 +147,7 @@ const GalleryPage = ({ deletePhoto, photos, updatePhoto, getPhotos }) => {
                       color="dark"
                       style={{ marginTop: '2rem' }}
                       block>
-                      Zmień opisy zdjęcia
+                      Change photo description
                   </Button>
                   </Form>
                 </ModalBody>

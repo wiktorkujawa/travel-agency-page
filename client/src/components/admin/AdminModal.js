@@ -33,38 +33,38 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
   const navOffer = <Nav tabs className=" admin-nav shadow-box" >
 
     <NavItem >
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}o-nas`}>
-        O nas
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}about`}>
+        About
       </NavLink>
     </NavItem>
 
     <NavItem >
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}ubezpieczenia`}>
-        Ubezpieczenia
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}insurance`}>
+        Insurance
       </NavLink>
     </NavItem>
 
     <NavItem >
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}wyjazdy-turystyczne`}>
-        Wyjazdy turystyczne
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}tourist-trips`}>
+        Tourist trips
       </NavLink>
     </NavItem>
 
     <NavItem >
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}kontakt`}>
-        Kontakt
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}contact`}>
+        Contact
       </NavLink>
     </NavItem>
 
     <NavItem >
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}slajdy`}>
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}slider`}>
         Slajdy
       </NavLink>
     </NavItem>
 
     <NavItem >
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}galeria`}>
-        Galeria
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}gallery`}>
+        Gallery
       </NavLink>
     </NavItem>
 
@@ -75,8 +75,8 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
     </NavItem>
 
     <NavItem >
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}ogloszenia`}>
-        Ogłoszenia
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}announcements`}>
+        Announcements
       </NavLink>
     </NavItem>
 
@@ -91,10 +91,10 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
           </span>
         </NavItem>
         <NavItem>
-          {match.params.type === "ogloszenia" ? <AnnouncementModal /> :
+          {match.params.type === "announcements" ? <AnnouncementModal /> :
             match.params.type === "faq" ? <QuestionModal /> :
-              match.params.type === "galeria" ? <GalleryModal /> :
-                match.params.type === "slajdy" ? <SliderModal /> : null}
+              match.params.type === "gallery" ? <GalleryModal /> :
+                match.params.type === "slider" ? <SliderModal /> : null}
 
         </NavItem>
         <NavItem>
@@ -113,14 +113,14 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
   const adminContent = <div className="admin-modal-content">
 
     {authLinks}
-    {match.params.type === "o-nas" ? <EditAbout /> :
-      match.params.type === "ubezpieczenia" ? <EditInsurancePage /> :
-        match.params.type === "ogloszenia" ? <EditAnnouncements /> :
+    {match.params.type === "about" ? <EditAbout /> :
+      match.params.type === "insurance" ? <EditInsurancePage /> :
+        match.params.type === "announcements" ? <EditAnnouncements /> :
           match.params.type === "faq" ? <EditFAQ /> :
-            match.params.type === "galeria" ? <EditGallery /> :
-              match.params.type === "kontakt" ? <EditContact /> :
-                match.params.type === "slajdy" ? <EditSlide /> :
-                  match.params.type === "wyjazdy-turystyczne" ? <a href={`${match.path.split("admin-modal", 1)}wyjazdy-turystyczne`} style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%" }}>Przejdź do listy ofert</a> : null
+            match.params.type === "gallery" ? <EditGallery /> :
+              match.params.type === "contact" ? <EditContact /> :
+                match.params.type === "slider" ? <EditSlide /> :
+                  match.params.type === "tourist-trips" ? <a href={`${match.path.split("admin-modal", 1)}tourist-trips`} style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%" }}>Go to offers list</a> : null
     }
   </div>;
 
@@ -134,8 +134,8 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
         </Fragment>
 
         : <Card style={{ textAlign: "center", margin: "auto", padding: "90px" }}>
-          <a href={`${match.path.split("admin-modal", 1)}`} >Przejdź do strony głównej</a>
-          <a href={`${match.path.split("admin-modal", 1)}admin`} >Przejdź do strony logowania</a>
+          <a href={`${match.path.split("admin-modal", 1)}`} >Go to homepage</a>
+          <a href={`${match.path.split("admin-modal", 1)}admin`} >Go to login page</a>
 
         </Card>}
 
