@@ -2,7 +2,7 @@
 Web page implemented with MERN stack with own CMS, authentifications methods(login, registration, receiving password via email, changing passwords) using nodemailer and bcryptjs, crypto and jsonwebtoken, changable content with image uploading using gridfs and multer packages. Used React functional components, redux, axios and mongoDB Atlas Cluster.
 # Quick start
 Add your mongoURI, email and password to the default.json file. Make sure you set an env var for that and the jwtSecret on deployment
-[//]: # Install dependencies for server
+@ Install dependencies for server
 npm install
 
 <!--  Install dependencies for client -->
