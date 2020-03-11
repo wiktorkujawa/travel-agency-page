@@ -5,19 +5,19 @@ Add your mongoURI, email and password to the default.json file. Make sure you se
 /# Install dependencies for server
 npm install
 
-/# Install dependencies for client
+<!--  Install dependencies for client -->
 npm run client-install
 
-/# Run the client & server with concurrently
+ <!-- Run the client & server with concurrently -->
 npm run dev
 
-/# Run the Express server only
+<!-- Run the Express server only -->
 npm run server
 
-/# Run the React client only
+<!-- Run the React client only -->
 npm run client
 
-/# Server runs on http://localhost:5000 and client on http://localhost:3000
+<!-- Server runs on http://localhost:5000 and client on http://localhost:3000 -->
 
 # Deployment
 
