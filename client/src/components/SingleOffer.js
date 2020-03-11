@@ -15,7 +15,7 @@ const SingleOffer = ({ offers, match }) => {
   const singleOffer = offers.filter(({ _id }) => _id === oferta);
   return (
     <div className="content-wrap" style={{ width: "100%" }} >
-      {singleOffer.map(({ price, description, tripLocation, image, title, type, arrivalDate, arrivalTime }) => (
+      {singleOffer.map(({ price, description, tripLocation, image, title, type, departureDate, departureTime }) => (
         <Card key={title}>
           <div style={{ position: "relative" }}>
             <CardImg top src={image} className="slide-image" />
@@ -27,23 +27,23 @@ const SingleOffer = ({ offers, match }) => {
             <Row style={{ whiteSpace: "nowrap" }}>
               <Col xs="12" sm="6" xl="3"><i className="fa fa-calendar fa-4x align-items-left" aria-hidden="true">
                 <span className="ml-4">
-                  <h4>{arrivalDate.slice(0, -14)}</h4>
-                  <h6 style={{ color: "grey" }}>Data wyjazdu</h6>
+                  <h4>{departureDate.slice(0, -14)}</h4>
+                  <h6 style={{ color: "grey" }}>Departure date</h6>
                 </span>  </i></Col>
               <Col xs="12" sm="6" xl="3"><i className="fa fa-bus fa-4x align-items-left mt-2" aria-hidden="true">
                 <span className="ml-4">
                   <h4>{tripLocation}</h4>
-                  <h6 style={{ color: "grey" }}>Lokalizacja</h6>
+                  <h6 style={{ color: "grey" }}>Location</h6>
                 </span>  </i></Col>
               <Col xs="12" sm="6" xl="3"><i className="fa fa-clock-o fa-4x align-items-left mt-2" aria-hidden="true">
                 <span className="ml-4">
-                  <h4>{arrivalTime}</h4>
-                  <h6 style={{ color: "grey" }}>Godzina wyjazdu</h6>
+                  <h4>{departureTime}</h4>
+                  <h6 style={{ color: "grey" }}>Departure hour</h6>
                 </span>  </i></Col>
               <Col xs="12" sm="6" xl="3"><i className="fa fa-euro fa-4x align-items-left mt-2" aria-hidden="true">
                 <span style={{ marginLeft: "2.5rem" }}>
                   <h4>{price}</h4>
-                  <h6 style={{ color: "grey" }}>Koszt wyjazdu/os.</h6>
+                  <h6 style={{ color: "grey" }}>Cost per person</h6>
                 </span>  </i></Col>
             </Row>
           </CardHeader>
@@ -51,7 +51,7 @@ const SingleOffer = ({ offers, match }) => {
             <div dangerouslySetInnerHTML={{ __html: sanitizer(description) }}></div>
           </CardBody>
           <CardFooter style={{ display: "flex", justifyContent: "space-between" }}>
-            <div>{arrivalDate.replace("T", " ").slice(0, -14)}</div>
+            <div>{departureDate.replace("T", " ").slice(0, -14)}</div>
             <div>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
           </CardFooter>
 

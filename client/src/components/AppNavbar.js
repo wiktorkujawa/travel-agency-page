@@ -69,35 +69,35 @@ const AppNavbar = ({ getContact, getOffers, contacts, isAuthenticated }) => {
 
     <Nav navbar pills>
       <NavItem className="ml-3">
-        <NavLink tag={RRNavLink} to="/o-nas" target={"_top"}>
-          O nas
+        <NavLink tag={RRNavLink} to="/about" target={"_top"}>
+          About
         </NavLink>
       </NavItem>
 
       <UncontrolledDropdown nav inNavbar className="ml-3" >
         <DropdownToggle nav caret>
-          Oferty
+          Offers
         </DropdownToggle>
         <DropdownMenu right >
-          <DropdownItem tag={RRNavLink} to="/wyjazdy-turystyczne/" target={"_top"}>
-            Wyjazdy turystyczne
+          <DropdownItem tag={RRNavLink} to="/tourist-trips/" target={"_top"}>
+            Tourist trips
           </DropdownItem>
 
-          <DropdownItem tag={RRNavLink} to="/ubezpieczenia" target={"_top"}>
-            Ubezpieczenia
+          <DropdownItem tag={RRNavLink} to="/insurance" target={"_top"}>
+            Insurance
           </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
 
       <NavItem className="ml-3">
-        <NavLink tag={RRNavLink} to="/ogloszenia" target={"_top"}>
-          Ogłoszenia
+        <NavLink tag={RRNavLink} to="/announcements" target={"_top"}>
+          Announcements
         </NavLink>
       </NavItem>
 
       <NavItem className="ml-3">
-        <NavLink tag={RRNavLink} to="/galeria" target={"_top"} >
-          Galeria
+        <NavLink tag={RRNavLink} to="/gallery" target={"_top"} >
+          Gallery
         </NavLink>
       </NavItem>
 
@@ -109,7 +109,7 @@ const AppNavbar = ({ getContact, getOffers, contacts, isAuthenticated }) => {
       {isAuthenticated ?
         <NavItem className="ml-3" style={{ backgroundColor: "red", borderRadius: "15px" }}>
           <NavLink tag={RRNavLink} to="/admin-modal" target={"_top"}>
-            Panel administracyjny
+            Admin panel
         </NavLink>
         </NavItem> : null
       }

@@ -31,8 +31,8 @@ import AdminModal from './components/admin/AdminModal';
 const PublicRoute = ({ component: Component, ...rest }) => {
   return (
     <Fragment>
-      <NavLink href="https://pl-pl.facebook.com/Biuro-Turystyczne-Kujawa-1576645672661238/" className="social-card" target={"_blank"}>
-        <i className="fa fa-facebook-official fa-4x" aria-hidden="true"></i>
+      <NavLink href="https://github.com/wiktorkujawa/" className="social-card" target={"_blank"}>
+        <i className="fa fa-github fa-4x" aria-hidden="true"></i>
       </NavLink>
       <Route {...rest} component={(props) => (
         <div className="public-route">
@@ -73,11 +73,11 @@ const App = props => {
 
                 <PublicRoute path="/" exact component={MainPage} />
 
-                <PublicRoute path="/ogloszenia" component={AnnouncementPage} />
+                <PublicRoute path="/announcements" component={AnnouncementPage} />
 
-                <PublicRoute exact path="/wyjazdy-turystyczne/" component={OfferList} />
-                <PublicRoute exact path="/wyjazdy-turystyczne/:type" component={OfferList} />
-                <PublicRoute path="/wyjazdy-turystyczne/:type/:oferta" component={SingleOffer} />
+                <PublicRoute exact path="/tourist-trips/" component={OfferList} />
+                <PublicRoute exact path="/tourist-trips/:type" component={OfferList} />
+                <PublicRoute path="/tourist-trips/:type/:oferta" component={SingleOffer} />
 
                 <AdminRoute path="/admin" exact component={LoginModal} />
                 <AdminRoute path="/admin/reset_password" component={ResetPassword} />
@@ -86,13 +86,13 @@ const App = props => {
                 <AdminRoute path="/admin-modal/" exact component={AdminModal} />
                 <AdminRoute path="/admin-modal/:type" exact component={AdminModal} />
 
-                <PublicRoute path="/o-nas" component={About} />
+                <PublicRoute path="/about" component={About} />
 
-                <PublicRoute path="/ubezpieczenia" component={InsurancePage} />
+                <PublicRoute path="/insurance" component={InsurancePage} />
 
                 <PublicRoute path="/faq" component={QuestionPage} />
 
-                <PublicRoute path="/galeria" component={GalleryPage} />
+                <PublicRoute path="/gallery" component={GalleryPage} />
 
               </Switch>
             </main>

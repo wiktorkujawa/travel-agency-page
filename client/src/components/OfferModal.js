@@ -20,11 +20,11 @@ const OfferModal = ({ addOffer }) => {
   const [fileData, setFileData] = useState(null);
   const [offerData, setOfferData] = useState({
     title: '',
-    arrivalDate: '',
-    arrivalTime: '',
+    departureDate: '',
+    departureTime: '',
     price: '',
     tripLocation: '',
-    type: 'indywidualne-i-rodzinne',
+    type: 'individual',
     description: ''
   })
 
@@ -50,10 +50,10 @@ const OfferModal = ({ addOffer }) => {
     const newOffer = new FormData();
     newOffer.append('offer', fileData);
 
-    const { arrivalDate, arrivalTime, price, tripLocation, type, description, title } = offerData;
+    const { departureDate, departureTime, price, tripLocation, type, description, title } = offerData;
     newOffer.append('title', title);
-    newOffer.append('arrivalDate', arrivalDate);
-    newOffer.append('arrivalTime', arrivalTime);
+    newOffer.append('departureDate', departureDate);
+    newOffer.append('departureTime', departureTime);
     newOffer.append('price', price);
     newOffer.append('tripLocation', tripLocation);
     newOffer.append('type', type);
@@ -84,85 +84,85 @@ const OfferModal = ({ addOffer }) => {
         toggle={toggle}
         size="lg"
       >
-        <ModalHeader toggle={toggle}>Dodaj ofertę</ModalHeader>
+        <ModalHeader toggle={toggle}>Add offer</ModalHeader>
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="arrivalDate">Data wyjazdu</Label>
+              <Label for="departureDate">Departure date</Label>
               <Input
                 type="date"
-                name="arrivalDate"
-                id="arrivalDate"
-                placeholder="Dodaj datę wyjazdu..."
+                name="departureDate"
+                id="departureDate"
+                placeholder="Add departure date..."
                 onChange={onChangeText}
               />
-              <Label for="arrivalTime">Godzina wyjazdu</Label>
+              <Label for="departureTime">Departure hour</Label>
               <Input
                 type="text"
-                name="arrivalTime"
-                id="arrivalTime"
-                placeholder="Dodaj godzinę wyjazdu..."
+                name="departureTime"
+                id="departureTime"
+                placeholder="Add departure hour..."
                 onChange={onChangeText}
               />
-              <Label for="price">Cena</Label>
+              <Label for="price">Price</Label>
               <Input
                 type="text"
                 name="price"
                 id="price"
-                placeholder="Wstaw cenę..."
+                placeholder="Add price..."
                 onChange={onChangeText}
               />
-              <Label for="tripLocation">Lokalizacja</Label>
+              <Label for="tripLocation">Trip location</Label>
               <Input
                 type="text"
                 name="tripLocation"
                 id="tripLocation"
-                placeholder="Dodaj lokalizację..."
+                placeholder="Add trip location..."
                 onChange={onChangeText}
               />
             </FormGroup>
 
 
             <FormGroup tag="fieldset">
-              <legend>Typ oferty</legend>
+              <legend>Offer type</legend>
               <Row style={{ justifyContent: "space-evenly" }}>
                 <FormGroup check  >
                   <Label check for="type1">
                     <Input
-                      checked={offerData.type === "indywidualne-i-rodzinne"}
+                      checked={offerData.type === "individual"}
                       type="radio"
                       name="type"
                       id="type1"
-                      value="indywidualne-i-rodzinne"
+                      value="individual"
                       onChange={onChangeText}
                     />
-                    Indywidualne i rodzinne
+                    Individual
               </Label>
                 </FormGroup>
                 <FormGroup check >
                   <Label check for="type2">
                     <Input
-                      checked={offerData.type === "firmowe"}
+                      checked={offerData.type === "bussiness-trips"}
                       type="radio"
                       name="type"
                       id="type2"
-                      value="firmowe"
+                      value="bussiness-trips"
                       onChange={onChangeText}
                     />
-                    Firmowe
+                    Bussiness trips
               </Label>
                 </FormGroup>
                 <FormGroup check >
                   <Label check for="type3">
                     <Input
-                      checked={offerData.type === "zielone-szkoly"}
+                      checked={offerData.type === "field-trips"}
                       type="radio"
                       name="type"
                       id="type3"
-                      value="zielone-szkoly"
+                      value="field-trips"
                       onChange={onChangeText}
                     />
-                    Zielone szkoły
+                    Field trips
               </Label>
                 </FormGroup>
               </Row>
@@ -170,45 +170,45 @@ const OfferModal = ({ addOffer }) => {
                 <FormGroup check >
                   <Label check for="type4">
                     <Input
-                      checked={offerData.type === "wycieczki-szkolne"}
+                      checked={offerData.type === "school-trips"}
                       type="radio"
                       name="type"
                       id="type4"
-                      value="wycieczki-szkolne"
+                      value="school-trips"
                       onChange={onChangeText}
                     />
-                    Wycieczki szkolne
+                    School trips
               </Label>
                 </FormGroup>
                 <FormGroup check >
                   <Label check for="type5">
                     <Input
-                      checked={offerData.type === "pielgrzymki"}
+                      checked={offerData.type === "pilgrims"}
                       type="radio"
                       name="type"
                       id="type5"
-                      value="pielgrzymki"
+                      value="pilgrims"
                       onChange={onChangeText}
                     />
-                    Pielgrzymki
+                    Pilgrims
               </Label>
                 </FormGroup>
                 <FormGroup check >
                   <Label check for="type6">
                     <Input
-                      checked={offerData.type === "kolonie-i-obozy"}
+                      checked={offerData.type === "summer-camps"}
                       type="radio"
                       name="type"
                       id="type6"
-                      value="kolonie-i-obozy"
+                      value="summer-camps"
                       onChange={onChangeText}
                     />
-                    Kolonie i obozy
+                    Summer camps
               </Label>
                 </FormGroup>
               </Row>
             </FormGroup>
-            <Label for="title">Tytuł oferty</Label>
+            <Label for="title">Offer title</Label>
             <Input
               type="text"
               name="title"
@@ -217,12 +217,12 @@ const OfferModal = ({ addOffer }) => {
               className="mb-3"
               onChange={onChangeText}
             />
-            <Label for="description">Opis oferty</Label>
+            <Label for="description">Offer description</Label>
             <Input
               type="textarea"
               name="description"
               id="description"
-              placeholder="Opisz ofertę..."
+              placeholder="Describe the offer..."
               className="mb-3"
               onChange={onChangeText}
             />
@@ -230,7 +230,7 @@ const OfferModal = ({ addOffer }) => {
               type="file"
               name="offer"
               id="offer"
-              label="Wybierz obrazek opisujący ofertę..."
+              label="Choose offer image..."
               onChange={onChangeFile}
             />
 
@@ -240,7 +240,7 @@ const OfferModal = ({ addOffer }) => {
               disabled={fileData === null}
               style={{ marginTop: '2rem' }}
               block>
-              Dodaj ofertę
+              Add offer
                 </Button>
           </Form>
         </ModalBody>

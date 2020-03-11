@@ -77,26 +77,26 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
         toggle={toggle}
         className="open-offer-modal"
       >
-        <ModalHeader toggle={toggle}>Dodaj nowe slajdy</ModalHeader>
+        <ModalHeader toggle={toggle}>Add new slides</ModalHeader>
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
 
-              <Label for="header">Nagłówek</Label>
+              <Label for="header">Header</Label>
               <Input
                 type="text"
                 name="header"
                 id="header"
-                placeholder="Dodaj nagłówek slajdu..."
+                placeholder="Add header..."
                 className="mb-3"
                 onChange={onChangeText}
               />
-              <Label for="caption">Podpis</Label>
+              <Label for="caption">Caption</Label>
               <Input
                 type="text"
                 name="caption"
                 id="caption"
-                placeholder="Dodaj podpis slajdu"
+                placeholder="Add caption"
                 className="mb-3"
                 onChange={onChangeText}
               />
@@ -105,7 +105,7 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
                 type="file"
                 name="slide"
                 id="slide"
-                label="Dodaj obrazek slajdu..."
+                label="Add slide image..."
                 onChange={onChangeImage}
               />
 
@@ -114,7 +114,7 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
                 disabled={imageData === null}
                 style={{ marginTop: '2rem' }}
                 block>
-                Dodaj slajd
+                Add slide
                 </Button>
             </FormGroup>
           </Form>

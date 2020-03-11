@@ -91,11 +91,11 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
         const newOffer = new FormData();
         newOffer.append('offer', fileData[index]);
 
-        const { title, arrivalDate, arrivalTime, price, tripLocation, type, description } = offerName[index];
+        const { title, departureDate, departureTime, price, tripLocation, type, description } = offerName[index];
 
         newOffer.append('title', title);
-        newOffer.append('arrivalDate', arrivalDate);
-        newOffer.append('arrivalTime', arrivalTime);
+        newOffer.append('departureDate', departureDate);
+        newOffer.append('departureTime', departureTime);
         newOffer.append('price', price);
         newOffer.append('tripLocation', tripLocation);
         newOffer.append('type', type);
@@ -110,8 +110,8 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
         toggle(index);
       }
       else {
-        const { title, arrivalDate, arrivalTime, price, tripLocation, type, description } = offerName[index];
-        const newOffer = { title, arrivalDate, arrivalTime, price, tripLocation, type, description };
+        const { title, departureDate, departureTime, price, tripLocation, type, description } = offerName[index];
+        const newOffer = { title, departureDate, departureTime, price, tripLocation, type, description };
 
         // Update offer via addOffer action
         updateOffer(id, newOffer);
@@ -191,7 +191,7 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
       <Card className="mt-5 mb-5">
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>chwilowo brak ofert w tej kategorii</CardBody>
       </Card>
-      : offers.map(({ _id, files_id, image, title, arrivalDate, arrivalTime, price, tripLocation, type, description }, index) => (
+      : offers.map(({ _id, files_id, image, title, departureDate, departureTime, price, tripLocation, type, description }, index) => (
 
         <Col
           key={files_id}
@@ -237,21 +237,21 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
 
                 <Form onSubmit={onSubmit(offerName, index, files_id)}>
                   <FormGroup>
-                    <Label for="arrivalDate">Data wyjazdu</Label>
+                    <Label for="departureDate">Data wyjazdu</Label>
                     <Input
                       type="date"
-                      name="arrivalDate"
-                      id="arrivalDate"
-                      defaultValue={arrivalDate}
+                      name="departureDate"
+                      id="departureDate"
+                      defaultValue={departureDate}
                       placeholder="Dodaj datę wyjazdu..."
                       onChange={onChange(offerName, index)}
                     />
                     <Label for="Godzina wyjazdu">Arrival time</Label>
                     <Input
                       type="text"
-                      name="arrivalTime"
-                      id="arrivalTime"
-                      defaultValue={arrivalTime}
+                      name="departureTime"
+                      id="departureTime"
+                      defaultValue={departureTime}
                       placeholder="Dodaj godzinę wyjazdu..."
                       onChange={onChange(offerName, index)}
                     />
@@ -410,7 +410,7 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
               </CardBody>
 
               <CardFooter className="offer-footer">
-                <div style={{ margin: "auto 0" }}>{arrivalDate.slice(0, -14)}</div>
+                <div style={{ margin: "auto 0" }}>{departureDate.slice(0, -14)}</div>
                 <div style={{ textAlign: "end", margin: "auto 0" }}>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
               </CardFooter>
             </NavLink>

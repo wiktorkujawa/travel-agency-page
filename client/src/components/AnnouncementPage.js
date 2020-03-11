@@ -48,7 +48,7 @@ const AnnouncementPage = ({ getAnnouncements, announcements }) => {
       {!(Array.isArray(announcements) && announcements.length) ?
         < CSSTransition timeout={500} classNames="fade" >
           <ListGroupItem style={{ borderRadius: "20px", textAlign: "center", fontStyle: "italic" }} className="content-margin">
-            chwilowo brak ofert w tej kategorii
+            Temporary no offers in this category
           </ListGroupItem>
         </CSSTransition>
         : announcements.slice(indexOfFirstPage, indexOfLastPage).map(({ _id, name, content, date }) => (

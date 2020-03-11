@@ -53,15 +53,15 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
   }
   const lastOffers = <Fragment>
     <div className="last-offers" >
-      Najnowsze oferty
+      Last offers
     </div>
 
     <CardGroup className="pt-5" style={{ backgroundColor: "#DDDDDD" }} >
       {!(Array.isArray(offers) && offers.length) ?
         <Card className="mt-5 mb-5">
-          <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>chwilowo brak ofert</CardBody>
+          <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no offers</CardBody>
         </Card> :
-        offers.slice(0, 4).map(({ _id, files_id, image, title, arrivalDate, price, type, description }) => (
+        offers.slice(0, 4).map(({ _id, files_id, image, title, departureDate, price, type, description }) => (
 
           <Col
             key={files_id}
@@ -70,7 +70,7 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
             xl="3"
           >
             <Card className="mb-5">
-              <NavLink tag={RRNavLink} to={`/wyjazdy-turystyczne/${type}/${_id}`}
+              <NavLink tag={RRNavLink} to={`/tourist-trips/${type}/${_id}`}
                 target={"_top"}
               >
                 <div style={{ overflow: "hidden", position: "relative" }}>
@@ -86,7 +86,7 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
                 </CardBody>
 
                 <CardFooter className="offer-footer">
-                  <div style={{ margin: "auto 0" }}>{arrivalDate.slice(0, -14)}</div>
+                  <div style={{ margin: "auto 0" }}>{departureDate.slice(0, -14)}</div>
                   <div style={{ textAlign: "end", margin: "auto 0" }}>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
                 </CardFooter>
               </NavLink>

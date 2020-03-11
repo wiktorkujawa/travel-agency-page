@@ -87,11 +87,11 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
         const newOffer = new FormData();
         newOffer.append('offer', fileData[index]);
 
-        const { title, arrivalDate, arrivalTime, price, tripLocation, type, description } = offerName[index];
+        const { title, departureDate, departureTime, price, tripLocation, type, description } = offerName[index];
 
         newOffer.append('title', title);
-        newOffer.append('arrivalDate', arrivalDate);
-        newOffer.append('arrivalTime', arrivalTime);
+        newOffer.append('departureDate', departureDate);
+        newOffer.append('departureTime', departureTime);
         newOffer.append('price', price);
         newOffer.append('tripLocation', tripLocation);
         newOffer.append('type', type);
@@ -106,8 +106,8 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
         toggle(index);
       }
       else {
-        const { title, arrivalDate, arrivalTime, price, tripLocation, type, description } = offerName[index];
-        const newOffer = { title, arrivalDate, arrivalTime, price, tripLocation, type, description };
+        const { title, departureDate, departureTime, price, tripLocation, type, description } = offerName[index];
+        const newOffer = { title, departureDate, departureTime, price, tripLocation, type, description };
 
         // Update offer via addOffer action
         updateOffer(id, newOffer);
@@ -125,38 +125,38 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
   const navOffer = <Nav tabs className="align-items-center filter-nav shadow-box pl-2 pr-2" >
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}indywidualne-i-rodzinne`}>
-        Indywidualne i rodzinne
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}individual`}>
+        Individual
       </NavLink>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}zielone-szkoly`}>
-        Zielone szkoły
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}field-trips`}>
+        Field trips
       </NavLink>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}kolonie-i-obozy`}>
-        Kolonie i obozy
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}summer-camps`}>
+        Summer camps
       </NavLink>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}pielgrzymki`}>
-        Pielgrzymki
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}pilgrims`}>
+        Pilgrims
       </NavLink>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}wycieczki-szkolne`}>
-        Wycieczki szkolne
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}school-trips`}>
+        School trips
       </NavLink>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}firmowe`}>
-        Firmowe
+      <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}bussiness-trips`}>
+        Bussiness trips
       </NavLink>
     </NavItem>
 
@@ -185,9 +185,9 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
 
     {!(Array.isArray(offerTypes) && offerTypes.length) ?
       <Card className="mt-5 mb-5">
-        <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>chwilowo brak ofert w tej kategorii</CardBody>
+        <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no offers in this category</CardBody>
       </Card>
-      : offerTypesForPage.map(({ _id, files_id, image, title, arrivalDate, arrivalTime, price, tripLocation, type, description }, index) => (
+      : offerTypesForPage.map(({ _id, files_id, image, title, departureDate, departureTime, price, tripLocation, type, description }, index) => (
 
         <Col
           key={files_id}
@@ -221,7 +221,7 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                   size="md"
                   onClick={toggle(index)}
                 >
-                  Zmień dane oferty
+                  Change offer data
               </Button>
               </Fragment>
               :
@@ -234,52 +234,52 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
               className="open-offer-modal"
               size="lg"
             >
-              <ModalHeader toggle={toggle(index)}>Dane Oferty</ModalHeader>
+              <ModalHeader toggle={toggle(index)}>Offer data</ModalHeader>
               <ModalBody>
 
                 <Form onSubmit={onSubmit(offerName, index, files_id)}>
                   <FormGroup>
-                    <Label for="arrivalDate">Data wyjazdu</Label>
+                    <Label for="departureDate">Departure date</Label>
                     <Input
                       type="date"
-                      name="arrivalDate"
-                      id="arrivalDate"
-                      defaultValue={arrivalDate}
-                      placeholder="Dodaj datę wyjazdu..."
+                      name="departureDate"
+                      id="departureDate"
+                      defaultValue={departureDate}
+                      placeholder="Add departure date..."
                       onChange={onChange(offerName, index)}
                     />
-                    <Label for="Godzina wyjazdu">Arrival time</Label>
+                    <Label for="Departure hour">Departure time</Label>
                     <Input
                       type="text"
-                      name="arrivalTime"
-                      id="arrivalTime"
-                      defaultValue={arrivalTime}
-                      placeholder="Dodaj godzinę wyjazdu..."
+                      name="departureTime"
+                      id="departureTime"
+                      defaultValue={departureTime}
+                      placeholder="Add departure hour..."
                       onChange={onChange(offerName, index)}
                     />
-                    <Label for="price">Cena</Label>
+                    <Label for="price">Price</Label>
                     <Input
                       type="text"
                       name="price"
                       id="price"
                       defaultValue={price}
-                      placeholder="Wstaw cenę..."
+                      placeholder="Insert price..."
                       onChange={onChange(offerName, index)}
                     />
-                    <Label for="tripLocation">Lokalizacja</Label>
+                    <Label for="tripLocation">Trip location</Label>
                     <Input
                       type="text"
                       name="tripLocation"
                       id="tripLocation"
                       defaultValue={tripLocation}
-                      placeholder="Dodaj lokalizację wycieczki..."
+                      placeholder="Add trip location..."
                       onChange={onChange(offerName, index)}
                     />
                   </FormGroup>
 
 
                   <FormGroup tag="fieldset">
-                    <legend>Typ oferty</legend>
+                    <legend>Offer type</legend>
                     <Row style={{ justifyContent: "space-evenly" }}>
                       <FormGroup check  >
                         <Label check for="type1">
@@ -287,10 +287,10 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                             type="radio"
                             name="type"
                             id="type1"
-                            value="indywidualne-i-rodzinne"
+                            value="individual"
                             onChange={onChange(offerName, index)}
                           />
-                          Indywidualne i rodzinne
+                          Individual
                       </Label>
                       </FormGroup>
                       <FormGroup check >
@@ -299,10 +299,10 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                             type="radio"
                             name="type"
                             id="type2"
-                            value="firmowe"
+                            value="bussiness-trips"
                             onChange={onChange(offerName, index)}
                           />
-                          Firmowe
+                          Bussiness trips
                       </Label>
                       </FormGroup>
                       <FormGroup check >
@@ -311,10 +311,10 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                             type="radio"
                             name="type"
                             id="type3"
-                            value="zielone-szkoly"
+                            value="field-trips"
                             onChange={onChange(offerName, index)}
                           />
-                          Zielone szkoły
+                          Field trips
                       </Label>
                       </FormGroup>
                     </Row>
@@ -325,10 +325,10 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                             type="radio"
                             name="type"
                             id="type4"
-                            value="wycieczki-szkolne"
+                            value="school-trips"
                             onChange={onChange(offerName, index)}
                           />
-                          Wycieczki szkolne
+                          School trips
                       </Label>
                       </FormGroup>
                       <FormGroup check >
@@ -337,10 +337,10 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                             type="radio"
                             name="type"
                             id="type5"
-                            value="pielgrzymki"
+                            value="pilgrims"
                             onChange={onChange(offerName, index)}
                           />
-                          Pielgrzymki
+                          Pilgrims
                       </Label>
                       </FormGroup>
                       <FormGroup check >
@@ -349,30 +349,30 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                             type="radio"
                             name="type"
                             id="type6"
-                            value="kolonie-i-obozy"
+                            value="summer-camps"
                             onChange={onChange(offerName, index)}
                           />
-                          Kolonie i obozy
+                          Summer camps
                       </Label>
                       </FormGroup>
                     </Row>
                   </FormGroup>
-                  <Label for="title">Tytuł oferty</Label>
+                  <Label for="title">Offer title</Label>
                   <Input
                     type="text"
                     name="title"
                     id="title"
-                    placeholder="Podaj tytuł oferty..."
+                    placeholder="Insert offer title..."
                     className="mb-3"
                     defaultValue={title}
                     onChange={onChange(offerName, index)}
                   />
-                  <Label for="description">Opis oferty</Label>
+                  <Label for="description">Offer description</Label>
                   <Input
                     type="textarea"
                     name="description"
                     id="description"
-                    placeholder="Opisz ofertę..."
+                    placeholder="Describe the offer..."
                     defaultValue={description}
                     className="mb-3"
                     onChange={onChange(offerName, index)}
@@ -381,7 +381,7 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                     type="file"
                     name="offer"
                     id="offer"
-                    label="Wybierz obrazek oferty..."
+                    label="Choose offer image..."
                     onChange={onChangeFile(index)}
                   />
 
@@ -390,7 +390,7 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
                     color="dark"
                     style={{ marginTop: '2rem' }}
                     block>
-                    Zmień dane oferty
+                    Change offer data
           </Button>
                 </Form>
               </ModalBody>
@@ -412,7 +412,7 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
               </CardBody>
 
               <CardFooter className="offer-footer">
-                <div style={{ margin: "auto 0" }}>{arrivalDate.slice(0, -14)}</div>
+                <div style={{ margin: "auto 0" }}>{departureDate.slice(0, -14)}</div>
                 <div style={{ textAlign: "end", margin: "auto 0" }}>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
               </CardFooter>
             </NavLink>

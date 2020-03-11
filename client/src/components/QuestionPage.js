@@ -20,7 +20,7 @@ const QuestionPage = ({ getQuestions, questions }) => {
         <TransitionGroup>
           {!(Array.isArray(questions) && questions.length) ?
             < CSSTransition timeout={500} classNames="fade" >
-              <ListGroupItem style={{ borderRadius: "20px", textAlign: "center", fontStyle: "italic" }}>Sekcja FAQ zostanie uzupełniona wkrótce</ListGroupItem>
+              <ListGroupItem style={{ borderRadius: "20px", textAlign: "center", fontStyle: "italic" }}>FAQ sections will be finished soon</ListGroupItem>
             </CSSTransition>
             : questions.map(({ _id, question, answer }) => (
               < CSSTransition key={_id} timeout={500} classNames="fade" >

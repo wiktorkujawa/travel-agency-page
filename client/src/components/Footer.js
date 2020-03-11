@@ -10,7 +10,7 @@ const Footer = ({ contacts }) => {
   const sanitizer = dompurify.sanitize;
 
   const contactSection = <div className="mb-1 footer-contactSection">
-    <h5 className="ml-4">Skontaktuj się z nami!</h5>
+    <h5 className="ml-4">Contact Us!</h5>
     {contacts.map(({ _id, address, email, phoneNumber }) => (
       <ul style={{ fontSize: "2rem" }} key={_id} className="fa-ul">
         <li style={{ padding: "0.5em 0" }}>
@@ -31,7 +31,7 @@ const Footer = ({ contacts }) => {
 
   const SugestedTrips =
     <div className="mb-4 shadow-box footer-suggested-trips">
-      <h5 style={{ borderBottom: "1px solid #B0CEDB", textAlign: "center" }}>Proponowane kierunki <br></br> krajowe i zagraniczne</h5>
+      <h5 style={{ borderBottom: "1px solid #B0CEDB", textAlign: "center" }}>Suggested locations <br></br> country and international</h5>
 
       <ul className="fa-ul footer-list">
         <li><span className="fa-li"><i className="fa fa-check"></i></span>Warszawa</li>
@@ -67,7 +67,7 @@ const Footer = ({ contacts }) => {
 
 
         <Container fluid={true} className="author-footer">
-          © 2020 PTH Emilia Kujawa. All rights reserved. Designed by Wiktor Kujawa
+          © 2020 Travel Agency Page. All rights reserved. Designed by Wiktor Kujawa
       </Container>
       </Container>
     </footer>

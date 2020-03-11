@@ -13,11 +13,11 @@ const OfferSchema = new Schema({
     type: String,
     required: true
   },
-  arrivalDate: {
+  departureDate: {
     type: Date,
     required: true
   },
-  arrivalTime: {
+  departureTime: {
     type: String,
     required: true
   },
