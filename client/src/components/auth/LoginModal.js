@@ -92,17 +92,17 @@ const LoginModal = ({ isAuthenticated, error, login, clearErrors }) => {
                   type="email"
                   name="email"
                   id="email"
-                  placeholder="Podaj adres email..."
+                  placeholder="Insert email address..."
                   className="mb-3"
                   onChange={onChange}
                 />
 
-                <Label for="password">Hasło</Label>
+                <Label for="password">Password</Label>
                 <Input
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="Wprowadż hasło..."
+                  placeholder="Insert password..."
                   className="mb-3"
                   onChange={onChange}
                 />
@@ -118,7 +118,7 @@ const LoginModal = ({ isAuthenticated, error, login, clearErrors }) => {
           </ModalBody>
           <NavLink style={{ textAlign: "center" }} tag={RRNavLink} to={`/admin/reset_password`}
             target={"_top"}
-          >Zapomniałeś hasła? Kliknij tutaj, aby odzyskać hasło.</NavLink>
+          >Forgot password? Click here to receive password</NavLink>
         </Modal>
         : <Redirect to="/admin-modal" />
       }

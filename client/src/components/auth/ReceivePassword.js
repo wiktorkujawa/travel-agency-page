@@ -61,7 +61,7 @@ const ReceivePassword = ({ receivePassword, error, clearErrors, match }) => {
     const { params: { id, token } } = match;
 
     if (error.id === null) {
-      setMsg('Hasło zmienione');
+      setMsg('Password changed');
       setAlertColor("success");
     }
 
@@ -75,7 +75,6 @@ const ReceivePassword = ({ receivePassword, error, clearErrors, match }) => {
       <Modal
         isOpen={modal}
         toggle={toggle}
-        className="open-modal"
       >
         <ModalHeader toggle={toggle}>Zmień hasło</ModalHeader>
         <ModalBody>
@@ -84,28 +83,28 @@ const ReceivePassword = ({ receivePassword, error, clearErrors, match }) => {
           ) : null}
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="newPassword">Nowe hasło</Label>
+              <Label for="newPassword">New password</Label>
               <Input
                 type="password"
                 name="newPassword"
                 id="newPassword"
-                placeholder="Wprowadź nowe hasło..."
+                placeholder="Insert new password..."
                 onChange={onChange}
               />
 
-              <Label for="confirmNewPassword"> Potwierdź nowe hasło</Label>
+              <Label for="confirmNewPassword"> Confirm new password</Label>
               <Input
                 type="password"
                 name="confirmNewPassword"
                 id="confirmNewPassword"
-                placeholder="Potwierdź nowe hasło..."
+                placeholder="Confirm new password..."
                 onChange={onChange}
               />
               <Button
                 color="dark"
                 style={{ marginTop: '2rem' }}
                 block>
-                Zmień hasło
+                Change password
                 </Button>
             </FormGroup>
           </Form>

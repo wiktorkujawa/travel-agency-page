@@ -9,7 +9,7 @@ const Logout = props => {
   return (
     <Fragment>
       <NavLink onClick={props.logout} href="#">
-        Wyloguj
+        Logout
         </NavLink>
     </Fragment>
   );

@@ -63,7 +63,7 @@ const RegisterModal = ({ error, register, clearErrors }) => {
     // Attempt to register
     register(newUser);
     if (error.id === null) {
-      setMsg('Użytkownik zarejestrowany');
+      setMsg('User registered');
       setAlertColor("success");
     }
   }
@@ -72,12 +72,11 @@ const RegisterModal = ({ error, register, clearErrors }) => {
   return (
     <div>
       <NavLink onClick={toggle} href="#">
-        Zarejestruj użytkownika
+        Register user
         </NavLink>
       <Modal
         isOpen={modal}
         toggle={toggle}
-        className="open-modal"
       >
         <ModalHeader toggle={toggle}>Register</ModalHeader>
         <ModalBody>
@@ -86,12 +85,12 @@ const RegisterModal = ({ error, register, clearErrors }) => {
           ) : null}
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="name">Nazwa użytkownika</Label>
+              <Label for="name">User name</Label>
               <Input
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Wprowadź nazwę użytkownika..."
+                placeholder="Insert user name..."
                 className="mb-3"
                 onChange={onChange}
               />
@@ -101,17 +100,17 @@ const RegisterModal = ({ error, register, clearErrors }) => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Wprowadź adres email użytkownika..."
+                placeholder="Insert email address..."
                 className="mb-3"
                 onChange={onChange}
               />
 
-              <Label for="password">Hasło</Label>
+              <Label for="password">Password</Label>
               <Input
                 type="password"
                 name="password"
                 id="password"
-                placeholder="Ustal hasło dostępu..."
+                placeholder="Insert password..."
                 className="mb-3"
                 onChange={onChange}
               />
@@ -121,7 +120,7 @@ const RegisterModal = ({ error, register, clearErrors }) => {
                 style={{ marginTop: '2rem' }}
                 block
               >
-                Zarejestruj
+                Register
                 </Button>
             </FormGroup>
           </Form>

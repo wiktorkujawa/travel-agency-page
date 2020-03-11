@@ -67,7 +67,7 @@ const ChangePassword = ({ user, changePassword, error, clearErrors }) => {
     }
 
     if (error.id === null) {
-      setMsg('Hasło zmienione');
+      setMsg('Password changed');
       setAlertColor("success");
     }
 
@@ -79,43 +79,42 @@ const ChangePassword = ({ user, changePassword, error, clearErrors }) => {
   return (
     <div>
       <NavLink onClick={toggle} href="#">
-        Zmień hasło
+        Change password
         </NavLink>
 
       <Modal
         isOpen={modal}
         toggle={toggle}
-        className="open-modal"
       >
-        <ModalHeader toggle={toggle}>Zmień hasło</ModalHeader>
+        <ModalHeader toggle={toggle}>Change password</ModalHeader>
         <ModalBody>
           {msg ? (
             <Alert color={alertColor}>{msg}</Alert>
           ) : null}
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="oldPassword">Aktualne hasło</Label>
+              <Label for="oldPassword">Old password</Label>
               <Input
                 type="password"
                 name="oldPassword"
                 id="oldPassword"
-                placeholder="Wprowadź stare hasło..."
+                placeholder="Insert old password..."
                 onChange={onChange}
               />
 
-              <Label for="newPassword">Nowe hasło</Label>
+              <Label for="newPassword">New password</Label>
               <Input
                 type="password"
                 name="newPassword"
                 id="newPassword"
-                placeholder="Wprowadź nowe hasło..."
+                placeholder="Insert new password..."
                 onChange={onChange}
               />
               <Button
                 color="dark"
                 style={{ marginTop: '2rem' }}
                 block>
-                Zmień hasło
+                Change password
                 </Button>
             </FormGroup>
           </Form>

@@ -53,7 +53,7 @@ const ResetPassword = ({ resetPassword, error, clearErrors }) => {
       email
     };
     if (error.id === null) {
-      setMsg('Akcja udana, sprawdź skrzynkę pocztową w celu zmiany hasła');
+      setMsg('Action successfull, check your email address to change password');
       setAlertColor("success");
     }
 
@@ -65,7 +65,6 @@ const ResetPassword = ({ resetPassword, error, clearErrors }) => {
   return (
     <div>
       <Modal
-        className="open-modal"
         isOpen={modal}
         toggle={toggle}
       >
@@ -81,14 +80,14 @@ const ResetPassword = ({ resetPassword, error, clearErrors }) => {
                 type="email"
                 name="email"
                 id="email"
-                placeholder="Podaj email..."
+                placeholder="Insert email..."
                 onChange={onChange}
               />
               <Button
                 color="dark"
                 style={{ marginTop: '2rem' }}
                 block>
-                Zmień hasło
+                Change password
                 </Button>
             </FormGroup>
           </Form>
