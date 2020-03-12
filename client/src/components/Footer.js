@@ -14,13 +14,13 @@ const Footer = ({ contacts }) => {
     {contacts.map(({ _id, address, email, phoneNumber }) => (
       <ul style={{ fontSize: "2rem" }} key={_id} className="fa-ul">
         <li style={{ padding: "0.5em 0" }}>
-          <span className="fa-li"><i className="fa fa-map-marker fa-fw mt-3" style={{ color: "#FF851B" }}></i></span><div style={{ marginLeft: "-1rem" }} dangerouslySetInnerHTML={{ __html: sanitizer(address) }}></div>
+          <span className="fa-li"><i className="fa fa-map-marker fa-fw mt-3" style={{ color: "#FF851B" }}></i></span><div dangerouslySetInnerHTML={{ __html: sanitizer(address) }}></div>
         </li>
         <li style={{ padding: "0.5em 0" }}>
-          <span className="fa-li"><i className="fa fa-envelope fa-fw" style={{ color: "#FF851B" }}></i></span><div style={{ marginLeft: "-1rem" }} ><h6>{email}</h6></div>
+          <span className="fa-li"><i className="fa fa-envelope fa-fw" style={{ color: "#FF851B" }}></i></span><div><h6>{email}</h6></div>
         </li>
         <li style={{ padding: "0.5em 0" }}>
-          <span className="fa-li"><i className="fa fa-phone fa-fw mt-4" style={{ color: "#FF851B" }}></i></span><div style={{ marginLeft: "-1rem" }} dangerouslySetInnerHTML={{ __html: sanitizer(phoneNumber) }}></div>
+          <span className="fa-li"><i className="fa fa-phone fa-fw mt-4" style={{ color: "#FF851B" }}></i></span><div dangerouslySetInnerHTML={{ __html: sanitizer(phoneNumber) }}></div>
         </li>
       </ul>
 
