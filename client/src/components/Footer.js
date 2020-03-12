@@ -61,7 +61,7 @@ const Footer = ({ contacts }) => {
       <Container fluid={true} className="footer shadow-box pt-3" >
 
         {SugestedTrips}
-        {/* {contactSection} */}
+        {contactSection}
 
         <NavLink className="footer-logo" href="/"><img src="/main.png" width="100%" alt="" /></NavLink>
 
