@@ -63,7 +63,7 @@ const Footer = ({ contacts }) => {
         {SugestedTrips}
         {contactSection}
 
-        <NavLink className="footer-logo" href="/"><img src="/main.png" width="100%" alt="" /></NavLink>
+        <NavLink className="footer-logo" href="/"><img src="/main.png" width="256" height="118" alt="" /></NavLink>
 
 
         <Container fluid={true} className="author-footer">
