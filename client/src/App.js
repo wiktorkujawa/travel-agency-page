@@ -31,9 +31,9 @@ import AdminModal from './components/admin/AdminModal';
 const PublicRoute = ({ component: Component, ...rest }) => {
   return (
     <Fragment>
-      <NavLink href="https://github.com/wiktorkujawa/" className="social-card" target={"_blank"}>
+      {/* <NavLink href="https://github.com/wiktorkujawa/" className="social-card" target={"_blank"}>
         <i className="fa fa-github fa-4x" aria-hidden="true"></i>
-      </NavLink>
+      </NavLink> */}
       <Route {...rest} component={(props) => (
         <div className="public-route">
           <AppNavbar />
