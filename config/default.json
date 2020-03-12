@@ -1,6 +1,6 @@
 {
-  "mongoURI": "add_your_mongo_url",
+  "mongoURI": "mongodb+srv://wiktor:limaczek231407@wiktor-g12on.mongodb.net/travel-agency-page?retryWrites=true&w=majority",
   "jwtSecret": "sl_myJwtSecret",
-  "email": "add_email",
-  "password": "add_email_password"
+  "email": "postmaster@travel-testing.com",
+  "password": "cee12e2e593bfa6fda32c4c38fe8a051-ee13fadb-a5fd3486"
 }

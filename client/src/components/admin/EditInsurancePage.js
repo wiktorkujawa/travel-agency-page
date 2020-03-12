@@ -8,6 +8,7 @@ import {
 import { connect } from 'react-redux';
 import { getInsurance, updateInsurance } from '../../actions/insuranceActions';
 import PropTypes from 'prop-types';
+import InsuranceModal from './modals/InsuranceModal';
 
 const Insurance = ({ getInsurance, insurances, updateInsurance }) => {
   const [Insurance, setInsurance] = useState('');
@@ -63,34 +64,38 @@ const Insurance = ({ getInsurance, insurances, updateInsurance }) => {
 
   return (
     <Fragment>
-      {insurances.map(({ files_id, name }) => (
+      {
+        !(Array.isArray(insurances) && insurances.length) ?
+          <InsuranceModal />
+          :
+          insurances.map(({ files_id, name }) => (
 
-        <Form onSubmit={onSubmit(files_id)}
-        >
-          <FormGroup>
-            <Input
-              type="textarea"
-              name="name"
-              id="name"
-              defaultValue={name}
-              placeholder="Add main info..."
-              onChange={onChange}
-            />
-            <CustomInput
-              type="file"
-              name="insurance"
-              id="insurance"
-              label="Choose insurance certificate image..."
-              onChange={onChangeFile}
-            />
-            <Button
-              color="dark"
-              block>
-              Zmień
+            <Form onSubmit={onSubmit(files_id)}
+            >
+              <FormGroup>
+                <Input
+                  type="textarea"
+                  name="name"
+                  id="name"
+                  defaultValue={name}
+                  placeholder="Add main info..."
+                  onChange={onChange}
+                />
+                <CustomInput
+                  type="file"
+                  name="insurance"
+                  id="insurance"
+                  label="Choose insurance certificate image..."
+                  onChange={onChangeFile}
+                />
+                <Button
+                  color="dark"
+                  block>
+                  Change
                 </Button>
-          </FormGroup>
-        </Form>
-      ))}
+              </FormGroup>
+            </Form>
+          ))}
     </Fragment>
   );
 }

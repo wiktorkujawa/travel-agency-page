@@ -121,7 +121,7 @@ const AppNavbar = ({ getContact, getOffers, contacts, isAuthenticated }) => {
     <Navbar color="light" light expand="md" className="main-navbar shadow-box" >
 
       <NavbarBrand href="/" className="mx-auto" >
-        <img src="/logo.svg" width="240" alt="" />
+        <img src="/main.png" width="240" height="120" alt="" />
       </NavbarBrand>
       <Container fluid={true} style={{ flexDirection: "column" }}>
         {upperNavbar}

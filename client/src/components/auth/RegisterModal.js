@@ -77,6 +77,7 @@ const RegisterModal = ({ error, register, clearErrors }) => {
       <Modal
         isOpen={modal}
         toggle={toggle}
+        className="open-offer-modal"
       >
         <ModalHeader toggle={toggle}>Register</ModalHeader>
         <ModalBody>
