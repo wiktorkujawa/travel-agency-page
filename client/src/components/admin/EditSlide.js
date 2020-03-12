@@ -72,7 +72,7 @@ const EditSlide = ({ getSlides, deleteSlide, updateSlide, slides }) => {
     <CardGroup>
       {!(Array.isArray(slides) && slides.length) ?
         <Card className="mt-5 mb-5">
-          <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no images</CardBody>
+          <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no slides</CardBody>
         </Card>
         :
         slides.map(({ _id, files_id, src, header, caption }, index) => (
