@@ -58,7 +58,7 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
 
     <NavItem >
       <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}slider`}>
-        Slajdy
+        Slides
       </NavLink>
     </NavItem>
 

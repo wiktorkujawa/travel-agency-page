@@ -105,8 +105,8 @@ router.delete('/:id', auth, (req, res) => {
 // @desc  Update file and object
 router.put('/:id', (req, res) => {
   Slide.findByIdAndUpdate(req.params.id, {
-    header: req.body.description,
-    caption: req.body.tripLocation,
+    header: req.body.header,
+    caption: req.body.caption,
     date: new Date()
   })
     .then(slide => res.json({ msg: 'Updated successfully' }))

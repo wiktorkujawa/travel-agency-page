@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import { getSlides, deleteSlide, updateSlide } from '../../actions/slideActions';
 import PropTypes from 'prop-types';
 
-const EditSlide = ({ getSlides, deleteSlide, slides }) => {
+const EditSlide = ({ getSlides, deleteSlide, updateSlide, slides }) => {
 
   const [slideDescription, setSlideDescription] = useState({});
   const [modal, setModal] = useState({});
@@ -55,7 +55,7 @@ const EditSlide = ({ getSlides, deleteSlide, slides }) => {
       const { header, caption } = slideDescription[index];
       const newSlide = { header, caption };
 
-      // Update photo via addPhoto action
+      // Update photo via addnewSlide action
       updateSlide(id, newSlide);
 
       // Close modal
