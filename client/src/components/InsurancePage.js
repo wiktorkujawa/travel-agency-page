@@ -10,7 +10,7 @@ import { getInsurance, updateInsurance } from '../actions/insuranceActions';
 import PropTypes from 'prop-types';
 import dompurify from 'dompurify';
 
-const Insurance = ({ getInsurance, insurances }) => {
+const InsurancePage = ({ getInsurance, insurances }) => {
   const sanitizer = dompurify.sanitize;
 
   useEffect(() => {
@@ -43,7 +43,7 @@ const Insurance = ({ getInsurance, insurances }) => {
   );
 }
 
-Insurance.propTypes = {
+InsurancePage.propTypes = {
   getInsurance: PropTypes.func.isRequired,
   insurances: PropTypes.array.isRequired
 }
@@ -55,4 +55,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   { getInsurance, updateInsurance }
-)(Insurance);
+)(InsurancePage);

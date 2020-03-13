@@ -10,7 +10,7 @@ import { getInsurance, updateInsurance } from '../../actions/insuranceActions';
 import PropTypes from 'prop-types';
 import InsuranceModal from './modals/InsuranceModal';
 
-const Insurance = ({ getInsurance, insurances, updateInsurance }) => {
+const EditInsurancePage = ({ getInsurance, insurances, updateInsurance }) => {
   const [Insurance, setInsurance] = useState('');
   const [fileData, setFileData] = useState(null);
 
@@ -100,7 +100,7 @@ const Insurance = ({ getInsurance, insurances, updateInsurance }) => {
   );
 }
 
-Insurance.propTypes = {
+EditInsurancePage.propTypes = {
   getInsurance: PropTypes.func.isRequired,
   insurances: PropTypes.array.isRequired
 }
@@ -112,4 +112,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   { getInsurance, updateInsurance }
-)(Insurance);
+)(EditInsurancePage);
