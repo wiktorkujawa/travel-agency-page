@@ -435,7 +435,7 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
       {cardList}
       {renderPageNumbers}
 
-      <OfferModal />
+      {isAuthenticated ? <OfferModal /> : null}
 
     </Container>
   );
