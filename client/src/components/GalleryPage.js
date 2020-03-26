@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { getPhotos } from '../actions/galleryActions';
 import PropTypes from 'prop-types';
 
+
 const GalleryPage = ({ photos, getPhotos, match }) => {
 
   const [modal, setModal] = useState({});
@@ -85,7 +86,7 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
     }
   }
 
-  const cardList = <CardGroup className="mb-3 mt-5" >
+  const cardList = <CardGroup className="mb-3 mt-5 fadein-elements" >
     {!(Array.isArray(photos) && photos.length) ?
       <Card className="mt-5 mb-5">
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no photos</CardBody>

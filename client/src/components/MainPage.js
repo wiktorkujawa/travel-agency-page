@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Carousel,
   CarouselItem,
@@ -18,6 +18,7 @@ import { getSlides, deleteSlide } from '../actions/slideActions';
 import PropTypes from 'prop-types';
 import MainPageModal from './MainPageModal';
 import dompurify from 'dompurify';
+import { Waypoint } from 'react-waypoint';
 
 
 
@@ -26,6 +27,8 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
   const sanitizer = dompurify.sanitize;
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
+
+  const [showOffers, setShowOffers] = useState(false);
   useEffect(() => {
     getSlides();
   }, [getSlides]);
@@ -34,6 +37,20 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
     deleteSlide(id)
   };
 
+  const handleEnter = () => {
+    setShowOffers(true)
+  };
+
+  const showLastOffers = () => {
+    if (!showOffers) {
+      return;
+    }
+    return (
+      lastOffers
+    );
+  };
+
+  console.log(showOffers);
 
   const next = () => {
     if (animating) return;
@@ -51,8 +68,8 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
     if (animating) return;
     setActiveIndex(newIndex);
   }
-  const lastOffers = <Fragment>
-    <div className="last-offers" >
+  const lastOffers = <div className="fadein-elements">
+    <div className="last-offers-title" >
       Last offers
     </div>
 
@@ -62,7 +79,6 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
           <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no offers</CardBody>
         </Card> :
         offers.slice(0, 4).map(({ _id, files_id, image, title, departureDate, price, type, description }) => (
-
           <Col
             key={files_id}
             xs="12"
@@ -96,7 +112,7 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
           </Col>
         ))}
     </CardGroup>
-  </Fragment>;
+  </div>;
 
 
   if (slides.length > 0) {
@@ -137,7 +153,15 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
           <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
           <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
         </Carousel>
-        {lastOffers}
+
+        <div style={{ height: "1px" }}> </div>
+
+        {showLastOffers()}
+
+        <Waypoint
+          onEnter={handleEnter}
+        />
+
       </Container>
     );
   }

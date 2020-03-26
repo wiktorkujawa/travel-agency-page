@@ -21,7 +21,41 @@ $colors: (
   shadow-box-color: #010101
 );
 
+/// Mixin to prefix several properties at once
+/// @author Hugo Giraudel
+/// @param {Map} $declarations - Declarations to prefix
+/// @param {List} $prefixes (()) - List of prefixes to print
+@mixin prefix($declarations, $prefixes: ()) {
+  @each $property, $value in $declarations {
+    @each $prefix in $prefixes {
+      #{'-' + $prefix + '-' + $property}: $value;
+    }
 
+    // Output standard non-prefixed declaration
+    #{$property}: $value;
+  }
+}
+
+
+// keyframes mixin
+// author: https://gist.github.com/mirisuzanne/1607696
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content; 
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  } 
+  @keyframes #{$name} {
+    @content;
+  } 
+}
 
 html {
   scroll-behavior: smooth;
@@ -384,13 +418,28 @@ a {
 .fa-ul i{
   color:#366E91;
 }
-.last-offers {
+.last-offers-title {
   text-align: center;
   background-color: #DDDDDD;
   font-size: 2em;
   padding: 0.5em 0;
   box-shadow: inset 0px 0px 20px 0px white;
  }
+
+ .fadein-elements {
+  @include prefix((
+    animation: fadein 2s
+  ), webkit ms moz o);
+ }
+
+ @include keyframes(fadein) {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
  .offer-footer {
   display: flex;

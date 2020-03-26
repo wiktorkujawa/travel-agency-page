@@ -122,7 +122,7 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
   };
 
   //rendered elements
-  const navOffer = <Nav tabs className="align-items-center filter-nav shadow-box pl-2 pr-2" >
+  const navOffer = <Nav tabs className="align-items-center filter-nav shadow-box" >
 
     <NavItem className="choose-offer-type">
       <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}individual`}>
@@ -181,10 +181,10 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
     );
   });
 
-  const cardList = <CardGroup className="mb-3" >
+  const cardList = <CardGroup className="mb-3 fadein-elements" >
 
     {!(Array.isArray(offerTypes) && offerTypes.length) ?
-      <Card className="mt-5 mb-5">
+      <Card className="mt-5 mb-5 ml-2 mr-2">
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no offers in this category</CardBody>
       </Card>
       : offerTypesForPage.map(({ _id, files_id, image, title, departureDate, departureTime, price, tripLocation, type, description }, index) => (
@@ -425,13 +425,14 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
 
   return (
     <Container fluid={true} className="content-wrap" style={{ paddingLeft: "0", paddingRight: "0" }}>
-
-      <NavLink className="item-main shadow-box mt-5 pl-2 pr-2" tag={RRNavLink} to={`${match.path.split(":", 1)}`}>
-        Wszystkie
+      <div className="ml-2 mr-2">
+        <NavLink className="item-main shadow-box mt-5 pl-2 pr-2" tag={RRNavLink} to={`${match.path.split(":", 1)}`}>
+          Wszystkie
       </NavLink>
 
 
-      {navOffer}
+        {navOffer}
+      </div>
       {cardList}
       {renderPageNumbers}
 
