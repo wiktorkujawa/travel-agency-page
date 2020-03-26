@@ -505,3 +505,10 @@ a {
 .shadow-box {
   box-shadow: inset 0px 0px 20px 0px color(shadow-box-color);
 }
+
+.carousel-control {
+  &:hover {
+    background: hsla(180,0%,50%,0.25);
+    border-radius: 20%;
+  }
+}

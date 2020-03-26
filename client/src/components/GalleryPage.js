@@ -86,9 +86,9 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
     }
   }
 
-  const cardList = <CardGroup className="mb-3 mt-5 fadein-elements" >
+  const cardList = <CardGroup className="mb-3 mt-5" >
     {!(Array.isArray(photos) && photos.length) ?
-      <Card className="mt-5 mb-5">
+      <Card className="mt-5 mb-5 fadein-elements">
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no photos</CardBody>
       </Card>
       :
@@ -102,7 +102,7 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
           xl="2"
         >
 
-          <Card>
+          <Card className="fadein-elements">
             <Modal
               isOpen={modal[index]}
               toggle={toggle(index)}

@@ -123,7 +123,7 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
           onExited={() => setAnimating(false)}
           key={files_id}
         >
-          <div className="slide-layout" >
+          <div className="slide-layout fadein-elements" >
             <img src={src} className="slide-image" alt="" />
             {isAuthenticated ?
               <Button
@@ -150,8 +150,8 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
         >
           <CarouselIndicators items={slides} activeIndex={activeIndex} onClickHandler={goToIndex} />
           {preparedSlides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={next} />
+          <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} className="carousel-control" />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={next} className="carousel-control" />
         </Carousel>
 
         <div style={{ height: "1px" }}> </div>

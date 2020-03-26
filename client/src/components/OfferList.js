@@ -181,10 +181,10 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
     );
   });
 
-  const cardList = <CardGroup className="mb-3 fadein-elements" >
+  const cardList = <CardGroup className="mb-3" >
 
     {!(Array.isArray(offerTypes) && offerTypes.length) ?
-      <Card className="mt-5 mb-5 ml-2 mr-2">
+      <Card className="mt-5 mb-5 ml-2 mr-2 fadein-elements">
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no offers in this category</CardBody>
       </Card>
       : offerTypesForPage.map(({ _id, files_id, image, title, departureDate, departureTime, price, tripLocation, type, description }, index) => (
@@ -197,7 +197,7 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
           xl="3"
         >
 
-          <Card className="mt-5">
+          <Card className="mt-5 fadein-elements">
             {isAuthenticated ?
               <Fragment>
                 <Button
