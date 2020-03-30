@@ -4,18 +4,15 @@ import {
   FormGroup,
   Label,
   Input,
-  Modal,
-  ModalBody,
-  ModalHeader,
-  Card, CardImg, CardBody,
-  CardText, CardGroup, Col
+  CustomInput,
+  Modal, ModalBody, ModalHeader,
+  Card, CardImg, CardBody, CardText, CardGroup, Col
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { getSlides, deleteSlide, updateSlide } from '../../actions/slideActions';
+import { getSlides, deleteSlide, updateSlide, addSlide } from '../../actions/slideActions';
 import PropTypes from 'prop-types';
 
-const EditSlide = ({ getSlides, deleteSlide, updateSlide, slides }) => {
-
+const ChangeSlide = ({ getSlides, deleteSlide, updateSlide, slides }) => {
   const [slideDescription, setSlideDescription] = useState({});
   const [modal, setModal] = useState({});
 
@@ -63,7 +60,6 @@ const EditSlide = ({ getSlides, deleteSlide, updateSlide, slides }) => {
     }
   };
 
-
   const onDeleteClick = id => {
     deleteSlide(id)
   };
@@ -83,7 +79,6 @@ const EditSlide = ({ getSlides, deleteSlide, updateSlide, slides }) => {
             lg="4"
             xl="3"
           >
-
             <Card>
               <Button
                 style={{
@@ -167,7 +162,108 @@ const EditSlide = ({ getSlides, deleteSlide, updateSlide, slides }) => {
   );
 }
 
-EditSlide.propTypes = {
+const AddSlide = ({ addSlide }) => {
+  const [modal, setModal] = useState(false);
+  const [imageData, setImageData] = useState(null);
+  const [slideData, setSlideData] = useState({
+    header: '',
+    caption: ''
+  })
+
+  const toggle = () => {
+    setModal(!modal);
+  };
+
+  const onChangeImage = e => {
+    setImageData(e.target.files[0]);
+  };
+
+  const onChangeText = e => {
+    setSlideData({
+      ...slideData,
+      [e.target.name]: e.target.value
+    });
+  }
+
+  const onSubmit = e => {
+    e.preventDefault();
+
+    const newSlide = new FormData();
+    newSlide.append('slide', imageData);
+
+    const { header, caption } = slideData;
+
+    newSlide.append('caption', caption);
+    newSlide.append('header', header);
+
+    addSlide(newSlide);
+
+    setImageData(null);
+
+    // Close modal
+    toggle();
+  }
+  return (
+    <div>
+      <Button
+        color="info"
+        size="md"
+        onClick={toggle}
+      >Add slide
+        </Button>
+
+      <Modal
+        isOpen={modal}
+        toggle={toggle}
+      >
+        <ModalHeader toggle={toggle}>Add new slides</ModalHeader>
+        <ModalBody>
+          <Form onSubmit={onSubmit}>
+            <FormGroup>
+
+              <Label for="header">Header</Label>
+              <Input
+                type="text"
+                name="header"
+                id="header"
+                placeholder="Add header..."
+                className="mb-3"
+                onChange={onChangeText}
+              />
+              <Label for="caption">Caption</Label>
+              <Input
+                type="text"
+                name="caption"
+                id="caption"
+                placeholder="Add caption..."
+                className="mb-3"
+                onChange={onChangeText}
+              />
+
+              <CustomInput
+                type="file"
+                name="slide"
+                id="slide"
+                label="Add image..."
+                onChange={onChangeImage}
+              />
+
+              <Button
+                color="dark"
+                disabled={imageData === null}
+                style={{ marginTop: '2rem' }}
+                block>
+                Add slide
+                </Button>
+            </FormGroup>
+          </Form>
+        </ModalBody>
+      </Modal>
+    </div>
+  );
+}
+
+ChangeSlide.propTypes = {
   getSlides: PropTypes.func.isRequired,
   slides: PropTypes.array.isRequired
 }
@@ -175,7 +271,13 @@ const mapStateToProps = (state) => ({
   slides: state.slide.slides
 });
 
-export default connect(
-  mapStateToProps,
-  { getSlides, deleteSlide, updateSlide }
-)(EditSlide);
+export default {
+  ChangeSlide: connect(
+    mapStateToProps,
+    { getSlides, deleteSlide, updateSlide }
+  )(ChangeSlide),
+  AddSlide: connect(
+    mapStateToProps,
+    { addSlide }
+  )(AddSlide)
+}

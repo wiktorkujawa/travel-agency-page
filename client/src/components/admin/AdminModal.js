@@ -20,8 +20,6 @@ import EditSlide from './EditSlide';
 import RegisterModal from '../auth/RegisterModal';
 import ChangePassword from '../auth/ChangePassword';
 import Logout from '../auth/Logout';
-import QuestionModal from './modals/QuestionModal';
-import SliderModal from './modals/SliderModal';
 
 
 const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
@@ -89,9 +87,9 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
         </NavItem>
         <NavItem>
           {match.params.type === "announcements" ? <EditAnnouncements.AddAnnouncements /> :
-            match.params.type === "faq" ? <QuestionModal /> :
+            match.params.type === "faq" ? <EditFAQ.AddQuestion /> :
               match.params.type === "gallery" ? <EditGallery.AddGallery /> :
-                match.params.type === "slider" ? <SliderModal /> : null}
+                match.params.type === "slider" ? <EditSlide.AddSlide /> : null}
 
         </NavItem>
         <NavItem>
@@ -113,10 +111,10 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
     {match.params.type === "about" ? <EditAbout /> :
       match.params.type === "insurance" ? <EditInsurance /> :
         match.params.type === "announcements" ? <EditAnnouncements.ChangeAnnouncements /> :
-          match.params.type === "faq" ? <EditFAQ /> :
+          match.params.type === "faq" ? <EditFAQ.ChangeQuestion /> :
             match.params.type === "gallery" ? <EditGallery.ChangeGallery /> :
               match.params.type === "contact" ? <EditContact /> :
-                match.params.type === "slider" ? <EditSlide /> :
+                match.params.type === "slider" ? <EditSlide.ChangeSlide /> :
                   match.params.type === "tourist-trips" ? <a href={`${match.path.split("admin-modal", 1)}tourist-trips`} style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%" }}>Go to offers list</a> : null
     }
   </div>;

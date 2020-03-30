@@ -95,60 +95,61 @@ const EditInsurance = ({ getInsurance, insurances, updateInsurance, addInsurance
     toggle();
   }
 
+  const InitInsurance = <div>
+    <Button
+      color="info"
+      size="md"
+      onClick={toggle}
+      className="slide-modify"
+      style={{ zIndex: "1000" }}
+    >Initialize Insurance
+</Button>
+
+    <Modal
+      isOpen={modal}
+      toggle={toggle}
+      className="open-offer-modal"
+    >
+      <ModalHeader toggle={toggle}>Add Insurance</ModalHeader>
+      <ModalBody>
+        <Form onSubmit={onSubmitInit}>
+          <FormGroup>
+            <Input
+              type="textarea"
+              name="name"
+              id="name"
+              placeholder="Add main info..."
+              onChange={onInit}
+            />
+
+          </FormGroup>
+          <CustomInput
+            type="file"
+            name="photo"
+            id="photo"
+            multiple
+            label="Add insurance image..."
+            onChange={onInitFile}
+          />
+
+
+          <Button
+            color="dark"
+            disabled={fileData === null}
+            style={{ marginTop: '2rem' }}
+            block>
+            Add Insurance
+        </Button>
+        </Form>
+      </ModalBody>
+    </Modal>
+  </div>;
 
   return (
     <Fragment>
       {
         !(Array.isArray(insurances) && insurances.length) ?
-          <div>
-            <Button
-              color="info"
-              size="md"
-              onClick={toggle}
-              className="slide-modify"
-              style={{ zIndex: "1000" }}
-            >Initialize Insurance
-          </Button>
-
-            <Modal
-              isOpen={modal}
-              toggle={toggle}
-              className="open-offer-modal"
-            >
-              <ModalHeader toggle={toggle}>Add Insurance</ModalHeader>
-              <ModalBody>
-                <Form onSubmit={onSubmitInit}>
-                  <FormGroup>
-                    <Input
-                      type="textarea"
-                      name="name"
-                      id="name"
-                      placeholder="Add main info..."
-                      onChange={onInit}
-                    />
-
-                  </FormGroup>
-                  <CustomInput
-                    type="file"
-                    name="photo"
-                    id="photo"
-                    multiple
-                    label="Add insurance image..."
-                    onChange={onInitFile}
-                  />
-
-
-                  <Button
-                    color="dark"
-                    disabled={fileData === null}
-                    style={{ marginTop: '2rem' }}
-                    block>
-                    Add Insurance
-                  </Button>
-                </Form>
-              </ModalBody>
-            </Modal>
-          </div>
+          InitInsurance
           :
           insurances.map(({ files_id, name }) => (
 
