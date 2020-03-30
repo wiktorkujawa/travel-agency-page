@@ -16,7 +16,7 @@ const SingleOffer = ({ offers, match }) => {
   return (
     <div className="content-wrap" style={{ width: "100%" }} >
       {singleOffer.map(({ price, description, tripLocation, image, title, type, departureDate, departureTime }) => (
-        <Card key={title}>
+        <Card key={title} className="fadein-elements">
           <div style={{ position: "relative" }}>
             <CardImg top src={image} className="slide-image" />
             <div className="title">{title}</div>
