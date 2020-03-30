@@ -10,20 +10,17 @@ import {
 } from 'react-router-dom';
 
 import EditAbout from './EditAbout';
-import EditInsurancePage from './EditInsurancePage';
+import EditInsurance from './EditInsurance';
 import EditAnnouncements from './EditAnnouncements';
 import EditFAQ from './EditFAQ';
 import EditGallery from './EditGallery';
 import EditContact from './EditContact';
 import EditSlide from './EditSlide';
 
-
 import RegisterModal from '../auth/RegisterModal';
 import ChangePassword from '../auth/ChangePassword';
 import Logout from '../auth/Logout';
-import AnnouncementModal from './modals/AnnouncementModal';
 import QuestionModal from './modals/QuestionModal';
-import GalleryModal from './modals/GalleryModal';
 import SliderModal from './modals/SliderModal';
 
 
@@ -91,9 +88,9 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
           </span>
         </NavItem>
         <NavItem>
-          {match.params.type === "announcements" ? <AnnouncementModal /> :
+          {match.params.type === "announcements" ? <EditAnnouncements.AddAnnouncements /> :
             match.params.type === "faq" ? <QuestionModal /> :
-              match.params.type === "gallery" ? <GalleryModal /> :
+              match.params.type === "gallery" ? <EditGallery.AddGallery /> :
                 match.params.type === "slider" ? <SliderModal /> : null}
 
         </NavItem>
@@ -114,10 +111,10 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
 
     {authLinks}
     {match.params.type === "about" ? <EditAbout /> :
-      match.params.type === "insurance" ? <EditInsurancePage /> :
-        match.params.type === "announcements" ? <EditAnnouncements /> :
+      match.params.type === "insurance" ? <EditInsurance /> :
+        match.params.type === "announcements" ? <EditAnnouncements.ChangeAnnouncements /> :
           match.params.type === "faq" ? <EditFAQ /> :
-            match.params.type === "gallery" ? <EditGallery /> :
+            match.params.type === "gallery" ? <EditGallery.ChangeGallery /> :
               match.params.type === "contact" ? <EditContact /> :
                 match.params.type === "slider" ? <EditSlide /> :
                   match.params.type === "tourist-trips" ? <a href={`${match.path.split("admin-modal", 1)}tourist-trips`} style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%" }}>Go to offers list</a> : null
