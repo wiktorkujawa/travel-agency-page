@@ -34,7 +34,6 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
   const indexOfLastPage = currentPage * offersPerPage;
   const indexOfFirstPage = indexOfLastPage - offersPerPage;
 
-
   const isMainPage = (Object.entries(match.params).length === 0 && match.params.constructor === Object);
   const offerTypes = (isMainPage ? offers : offers.filter(({ type }) => type === match.params.type));
 
@@ -123,7 +122,6 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
 
   //rendered elements
   const navOffer = <Nav tabs className="align-items-center filter-nav shadow-box" >
-
     <NavItem className="choose-offer-type">
       <NavLink className="checked-type" tag={RRNavLink} to={`${match.path.split(":", 1)}individual`}>
         Individual
@@ -159,7 +157,6 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
         Bussiness trips
       </NavLink>
     </NavItem>
-
   </Nav>;
 
 
@@ -428,9 +425,7 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
       <div className="ml-2 mr-2">
         <NavLink className="item-main shadow-box mt-5 pl-2 pr-2" tag={RRNavLink} to={`${match.path.split(":", 1)}`}>
           Wszystkie
-      </NavLink>
-
-
+        </NavLink>
         {navOffer}
       </div>
       {cardList}
@@ -441,8 +436,6 @@ const OfferList = ({ deleteOffer, isAuthenticated, offers, updateOffer, match })
     </Container>
   );
 }
-
-
 
 OfferList.propTypes = {
   offers: PropTypes.array.isRequired,

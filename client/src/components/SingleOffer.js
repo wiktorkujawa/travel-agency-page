@@ -54,8 +54,6 @@ const SingleOffer = ({ offers, match }) => {
             <div>{departureDate.replace("T", " ").slice(0, -14)}</div>
             <div>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
           </CardFooter>
-
-
         </Card>
       ))}
     </div>

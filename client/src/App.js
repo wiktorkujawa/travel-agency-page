@@ -74,6 +74,10 @@ const App = props => {
                 <PublicRoute path="/" exact component={MainPage} />
 
                 <PublicRoute path="/announcements" component={AnnouncementPage} />
+                <PublicRoute path="/about" component={About} />
+                <PublicRoute path="/insurance" component={InsurancePage} />
+                <PublicRoute path="/faq" component={QuestionPage} />
+                <PublicRoute path="/gallery" component={GalleryPage} />
 
                 <PublicRoute exact path="/tourist-trips/" component={OfferList} />
                 <PublicRoute exact path="/tourist-trips/:type" component={OfferList} />
@@ -85,14 +89,6 @@ const App = props => {
 
                 <AdminRoute path="/admin-modal/" exact component={AdminModal} />
                 <AdminRoute path="/admin-modal/:type" exact component={AdminModal} />
-
-                <PublicRoute path="/about" component={About} />
-
-                <PublicRoute path="/insurance" component={InsurancePage} />
-
-                <PublicRoute path="/faq" component={QuestionPage} />
-
-                <PublicRoute path="/gallery" component={GalleryPage} />
 
               </Switch>
             </main>
