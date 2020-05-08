@@ -19,12 +19,14 @@ import {
   NavLink as RRNavLink
 } from 'react-router-dom';
 
-const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
+const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
   const sanitizer = dompurify.sanitize;
 
   // Offer and image data
   const [offerName, setOfferName] = useState({});
   const [fileData, setFileData] = useState({});
+
+  const [filterOffers, setFilterOffers] = useState('');
 
   const [modal, setModal] = useState({});
 
@@ -36,7 +38,7 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
 
 
   // const isMainPage = (Object.entries(match.params).length === 0 && match.params.constructor === Object);
-  // const offerTypes = (isMainPage ? offers : offers.filter(({ type }) => type === match.params.type));
+  const offerTypes = (filterOffers ? offers.filter(({ type }) => type === filterOffers) : offers);
 
   // const offerTypesForPage = offerTypes.slice(indexOfFirstPage, indexOfLastPage);
 
@@ -69,6 +71,12 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
       setOfferName(prevObjs => ({ ...prevObjs, [index]: { ...offer[index], [name]: value } }));
     }
   }
+
+  const onFilter = (filterType) => {
+    return (event) =>
+      setFilterOffers(filterType);
+  }
+
   const onChangeFile = (index) => {
     return (event) => {
       const { target: { files } } = event;
@@ -129,39 +137,39 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
   const navOffer = <Nav tabs className="align-items-center filter-nav shadow-box pl-2 pr-2" >
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`wyjazdy-turystyczne/indywidualne-i-rodzinne`}>
-        Indywidualne i rodzinne
-      </NavLink>
+      <Button onClick={onFilter('individual')}>
+        Individual
+      </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`wyjazdy-turystyczne/zielone-szkoly`}>
-        Zielone szkoły
-      </NavLink>
+      <Button onClick={onFilter('field-trips')}>
+        Field trips
+      </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`wyjazdy-turystyczne/kolonie-i-obozy`}>
-        Kolonie i obozy
-      </NavLink>
+      <Button onClick={onFilter('summer-camps')}>
+        Summer camps
+      </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`wyjazdy-turystyczne/pielgrzymki`}>
-        Pielgrzymki
-      </NavLink>
+      <Button onClick={onFilter('pilgrims')}>
+        Pilgrims
+      </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`wyjazdy-turystyczne/wycieczki-szkolne`}>
-        Wycieczki szkolne
-      </NavLink>
+      <Button onClick={onFilter('school-trips')}>
+        School trips
+      </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <NavLink className="checked-type" tag={RRNavLink} to={`wyjazdy-turystyczne/firmowe`}>
-        Firmowe
-      </NavLink>
+      <Button onClick={onFilter('bussiness-trips')}>
+        Bussiness Trips
+      </Button>
     </NavItem>
 
   </Nav>;
@@ -191,7 +199,7 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
       <Card className="mt-5 mb-5">
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>chwilowo brak ofert w tej kategorii</CardBody>
       </Card>
-      : offers.map(({ _id, files_id, image, title, departureDate, departureTime, price, tripLocation, type, description }, index) => (
+      : offerTypes.map(({ _id, files_id, image, title, departureDate, departureTime, price, tripLocation, type, description }, index) => (
 
         <Col
           key={files_id}
@@ -285,10 +293,10 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                             type="radio"
                             name="type"
                             id="type1"
-                            value="indywidualne-i-rodzinne"
+                            value="individual"
                             onChange={onChange(offerName, index)}
                           />
-                          Indywidualne i rodzinne
+                          Individual
                       </Label>
                       </FormGroup>
                       <FormGroup check >
@@ -297,10 +305,10 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                             type="radio"
                             name="type"
                             id="type2"
-                            value="firmowe"
+                            value="bussiness-trips"
                             onChange={onChange(offerName, index)}
                           />
-                          Firmowe
+                          Bussiness Trips
                       </Label>
                       </FormGroup>
                       <FormGroup check >
@@ -309,10 +317,10 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                             type="radio"
                             name="type"
                             id="type3"
-                            value="zielone-szkoly"
+                            value="field-trips"
                             onChange={onChange(offerName, index)}
                           />
-                          Zielone szkoły
+                          Field trips
                       </Label>
                       </FormGroup>
                     </Row>
@@ -323,7 +331,7 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                             type="radio"
                             name="type"
                             id="type4"
-                            value="wycieczki-szkolne"
+                            value="school-trips"
                             onChange={onChange(offerName, index)}
                           />
                           Wycieczki szkolne
@@ -335,10 +343,10 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                             type="radio"
                             name="type"
                             id="type5"
-                            value="pielgrzymki"
+                            value="pilgrims"
                             onChange={onChange(offerName, index)}
                           />
-                          Pielgrzymki
+                          Pilgrims
                       </Label>
                       </FormGroup>
                       <FormGroup check >
@@ -347,10 +355,10 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                             type="radio"
                             name="type"
                             id="type6"
-                            value="kolonie-i-obozy"
+                            value="summer-camps"
                             onChange={onChange(offerName, index)}
                           />
-                          Kolonie i obozy
+                          Summer camps
                       </Label>
                       </FormGroup>
                     </Row>
@@ -424,9 +432,9 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
   return (
     <Container fluid={true} className="content-wrap" style={{ paddingLeft: "0", paddingRight: "0" }}>
 
-      <NavLink className="item-main shadow-box mt-5 pl-2 pr-2" tag={RRNavLink} to={`wyjazdy-turystyczne/`}>
-        Wszystkie
-      </NavLink>
+      <Button onClick={onFilter('')}>
+        All
+      </Button>
 
 
       {navOffer}
@@ -441,7 +449,7 @@ const AdminModal = ({ deleteOffer, offers, updateOffer, getOffers }) => {
 
 
 
-AdminModal.propTypes = {
+EditOffers.propTypes = {
   offers: PropTypes.array.isRequired,
   getOffers: PropTypes.func.isRequired
 }
@@ -453,4 +461,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   { deleteOffer, updateOffer, getOffers }
-)(AdminModal);
+)(EditOffers);

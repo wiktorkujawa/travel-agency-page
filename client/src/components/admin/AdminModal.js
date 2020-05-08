@@ -16,6 +16,7 @@ import EditFAQ from './EditFAQ';
 import EditGallery from './EditGallery';
 import EditContact from './EditContact';
 import EditSlide from './EditSlide';
+import EditOffers from './EditOffers';
 
 import RegisterModal from '../auth/RegisterModal';
 import ChangePassword from '../auth/ChangePassword';
@@ -115,7 +116,9 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
             match.params.type === "gallery" ? <EditGallery.ChangeGallery /> :
               match.params.type === "contact" ? <EditContact /> :
                 match.params.type === "slider" ? <EditSlide.ChangeSlide /> :
-                  match.params.type === "tourist-trips" ? <a href={`${match.path.split("admin-modal", 1)}tourist-trips`} style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%" }}>Go to offers list</a> : null
+                  // match.params.type === "tourist-trips" ? <a href={`${match.path.split("admin-modal", 1)}tourist-trips`} style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%" }}>Go to offers list</a>
+                  match.params.type === "tourist-trips" ? <EditOffers />
+                    : null
     }
   </div>;
 

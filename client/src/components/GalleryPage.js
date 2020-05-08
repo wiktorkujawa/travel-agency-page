@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import {
   Container, Button,
-  Modal,
-  ModalBody,
-  Card, CardImg, CardBody,
-  CardText, CardGroup, Col
+  Card, CardBody, CardGroup, Col
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getPhotos } from '../actions/galleryActions';
 import PropTypes from 'prop-types';
 
+import GalleryItem from './GalleryItem';
 
 const GalleryPage = ({ photos, getPhotos, match }) => {
 
   const [modal, setModal] = useState({});
-
 
   const photosPerPage = 12;
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,15 +40,11 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
   }, [match]);
 
 
-
-
   const toggle = (index) => {
     return (event) => {
       setModal(prevObjs => ({ ...prevObjs, [index]: !prevObjs[index] }));
     }
   };
-
-
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil((photos.length / photosPerPage)); i++) {
@@ -92,8 +85,7 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no photos</CardBody>
       </Card>
       :
-      photos.slice(indexOfFirstPage, indexOfLastPage).map(({ _id, files_id, image, tripLocation, description }, index) => (
-
+      photos.slice(indexOfFirstPage, indexOfLastPage).map(({ files_id, image, tripLocation, description }, index) => (
         <Col style={{ padding: "0" }}
           key={files_id}
           sm="6"
@@ -101,44 +93,11 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
           lg="3"
           xl="2"
         >
-
-          <Card className="fadein-elements">
-            <Modal
-              isOpen={modal[index]}
-              toggle={toggle(index)}
-              className="open-offer-modal"
-              size="lg"
-            >
-
-              <ModalBody style={{ padding: "0", textAlign: "center" }}>
-                <div style={{ position: "relative" }}>
-                  <img src={image} style={{ maxHeight: "70vh", minHeight: "30rem", objectFit: "fill", width: "100%" }} alt="" />
-                  <Button style={{ position: "absolute", left: "0", top: "50%" }} onClick={previousPhoto(index)} ><i className="fa fa-angle-left fa-2x" aria-hidden="true"></i></Button>
-                  <Button style={{ position: "absolute", right: "0", top: "50%" }} onClick={nextPhoto(index)} ><i className="fa fa-angle-right fa-2x" aria-hidden="true"></i></Button>
-                </div>
-                <strong>{tripLocation}</strong> <br></br>
-                <small className="text-muted">{description}</small>
-
-              </ModalBody>
-            </Modal>
-
-            <CardImg top src={image}
-              height="200"
-              onClick={toggle(index)}
-            />
-            <CardBody style={{ padding: "0", textAlign: "center" }}>
-              <CardText>
-                <strong>{tripLocation}</strong> <br></br>
-                <small className="text-muted">{description}</small>
-              </CardText>
-            </CardBody>
-          </Card>
+          <GalleryItem description={description} tripLocation={tripLocation} index={index} image={image} modal={modal} previousPhoto={previousPhoto} nextPhoto={nextPhoto} toggle={toggle} />
         </Col>
       ))}
 
   </CardGroup>;
-
-
 
 
   return (
