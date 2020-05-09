@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Container, Button, Form,
   FormGroup,
@@ -8,18 +8,14 @@ import {
   ModalBody,
   ModalHeader,
   Card, CardFooter, CardImg, CardBody,
-  CardTitle, CardGroup, Row, Col, NavLink, NavItem, Nav, CustomInput
+  CardTitle, CardGroup, Row, Col, NavItem, Nav, CustomInput
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { deleteOffer, updateOffer, getOffers } from '../../actions/offerActions';
+import { deleteOffer, updateOffer, getOffers, addOffer } from '../../actions/offerActions';
 import PropTypes from 'prop-types';
-import OfferModal from '../OfferModal';
 import dompurify from 'dompurify';
-import {
-  NavLink as RRNavLink
-} from 'react-router-dom';
 
-const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
+const ChangeOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
   const sanitizer = dompurify.sanitize;
 
   // Offer and image data
@@ -30,17 +26,7 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
 
   const [modal, setModal] = useState({});
 
-  //initial pagination settings
-  // const offersPerPage = 4;
-  // const [currentPage, setCurrentPage] = useState(1);
-  // const indexOfLastPage = currentPage * offersPerPage;
-  // const indexOfFirstPage = indexOfLastPage - offersPerPage;
-
-
-  // const isMainPage = (Object.entries(match.params).length === 0 && match.params.constructor === Object);
   const offerTypes = (filterOffers ? offers.filter(({ type }) => type === filterOffers) : offers);
-
-  // const offerTypesForPage = offerTypes.slice(indexOfFirstPage, indexOfLastPage);
 
   useEffect(() => {
     getOffers()
@@ -48,7 +34,6 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
 
   useEffect(() => {
     const createArray = () => {
-      // const temporaryOffers = (Object.entries(match.params).length === 0 && match.params.constructor === Object) ? offers : offers.filter(({ type }) => type === match.params.type);
       const newNames = offers.map(offer => offer);
       setOfferName({ ...newNames });
       const newBools = offers.map(offer => false);
@@ -58,11 +43,6 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
     };
     createArray();
   }, [offers]);
-
-  // useEffect(() => {
-  //   setCurrentPage(1);
-  // }, [match]);
-
 
   //Events functions
   const onChange = (offer, index) => {
@@ -83,9 +63,7 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
       setFileData(prevObjs => ({ ...prevObjs, [index]: files[0] }));
     }
   };
-  // const changePage = (event) => {
-  //   setCurrentPage(Number(event.target.id));
-  // }
+
   const toggle = (index) => {
     return (event) => {
       setModal(prevObjs => ({ ...prevObjs, [index]: !prevObjs[index] }));
@@ -134,67 +112,52 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
   };
 
   //rendered elements
-  const navOffer = <Nav tabs className="align-items-center filter-nav shadow-box pl-2 pr-2" >
+  const navOffer = <Nav tabs className="align-items-center  shadow-box pl-2 pr-2" >
+    <NavItem className="choose-offer-type">
+      <Button className="shadow-box" style={{ width: "100%" }} onClick={onFilter('')}>
+        All
+      </Button>
+    </NavItem>
 
     <NavItem className="choose-offer-type">
-      <Button onClick={onFilter('individual')}>
+      <Button style={{ width: "100%" }} onClick={onFilter('individual')}>
         Individual
       </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <Button onClick={onFilter('field-trips')}>
+      <Button style={{ width: "100%" }} onClick={onFilter('field-trips')}>
         Field trips
       </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <Button onClick={onFilter('summer-camps')}>
+      <Button style={{ width: "100%" }} onClick={onFilter('summer-camps')}>
         Summer camps
       </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <Button onClick={onFilter('pilgrims')}>
+      <Button style={{ width: "100%" }} onClick={onFilter('pilgrims')}>
         Pilgrims
       </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <Button onClick={onFilter('school-trips')}>
+      <Button style={{ width: "100%" }} onClick={onFilter('school-trips')}>
         School trips
       </Button>
     </NavItem>
 
     <NavItem className="choose-offer-type">
-      <Button onClick={onFilter('bussiness-trips')}>
+      <Button style={{ width: "100%" }} onClick={onFilter('bussiness-trips')}>
         Bussiness Trips
       </Button>
     </NavItem>
 
   </Nav>;
 
-
-  // const pageNumbers = [];
-  // for (let i = 1; i <= Math.ceil(offerTypes.length / offersPerPage); i++) {
-  //   pageNumbers.push(i);
-  // }
-
-  // const renderPageNumbers = pageNumbers.map(number => {
-  //   return (
-  //     <Button
-  //       key={number}
-  //       id={number}
-  //       onClick={changePage}
-  //       active={currentPage === number}
-  //     >
-  //       {number}
-  //     </Button>
-  //   );
-  // });
-
   const cardList = <CardGroup className="mb-3" >
-
     {!(Array.isArray(offers) && offers.length) ?
       <Card className="mt-5 mb-5">
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>chwilowo brak ofert w tej kategorii</CardBody>
@@ -251,41 +214,41 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                       name="departureDate"
                       id="departureDate"
                       defaultValue={departureDate}
-                      placeholder="Dodaj datę wyjazdu..."
+                      placeholder="Add departure date..."
                       onChange={onChange(offerName, index)}
                     />
-                    <Label for="Godzina wyjazdu">Arrival time</Label>
+                    <Label for="Departure time">Deaparture time</Label>
                     <Input
                       type="text"
                       name="departureTime"
                       id="departureTime"
                       defaultValue={departureTime}
-                      placeholder="Dodaj godzinę wyjazdu..."
+                      placeholder="Add departure time..."
                       onChange={onChange(offerName, index)}
                     />
-                    <Label for="price">Cena</Label>
+                    <Label for="price">Price</Label>
                     <Input
                       type="text"
                       name="price"
                       id="price"
                       defaultValue={price}
-                      placeholder="Wstaw cenę..."
+                      placeholder="Insert price..."
                       onChange={onChange(offerName, index)}
                     />
-                    <Label for="tripLocation">Lokalizacja</Label>
+                    <Label for="tripLocation">Location</Label>
                     <Input
                       type="text"
                       name="tripLocation"
                       id="tripLocation"
                       defaultValue={tripLocation}
-                      placeholder="Dodaj lokalizację wycieczki..."
+                      placeholder="Add trip location..."
                       onChange={onChange(offerName, index)}
                     />
                   </FormGroup>
 
 
                   <FormGroup tag="fieldset">
-                    <legend>Typ oferty</legend>
+                    <legend>Offer type</legend>
                     <Row style={{ justifyContent: "space-evenly" }}>
                       <FormGroup check  >
                         <Label check for="type1">
@@ -334,7 +297,7 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                             value="school-trips"
                             onChange={onChange(offerName, index)}
                           />
-                          Wycieczki szkolne
+                          School trips
                       </Label>
                       </FormGroup>
                       <FormGroup check >
@@ -363,22 +326,22 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                       </FormGroup>
                     </Row>
                   </FormGroup>
-                  <Label for="title">Tytuł oferty</Label>
+                  <Label for="title">Offer title</Label>
                   <Input
                     type="text"
                     name="title"
                     id="title"
-                    placeholder="Podaj tytuł oferty..."
+                    placeholder="Add offer title..."
                     className="mb-3"
                     defaultValue={title}
                     onChange={onChange(offerName, index)}
                   />
-                  <Label for="description">Opis oferty</Label>
+                  <Label for="description">Offer description</Label>
                   <Input
                     type="textarea"
                     name="description"
                     id="description"
-                    placeholder="Opisz ofertę..."
+                    placeholder="Describe offer..."
                     defaultValue={description}
                     className="mb-3"
                     onChange={onChange(offerName, index)}
@@ -387,7 +350,7 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                     type="file"
                     name="offer"
                     id="offer"
-                    label="Wybierz obrazek oferty..."
+                    label="Choose offer image..."
                     onChange={onChangeFile(index)}
                   />
 
@@ -396,69 +359,292 @@ const EditOffers = ({ deleteOffer, offers, updateOffer, getOffers }) => {
                     color="dark"
                     style={{ marginTop: '2rem' }}
                     block>
-                    Zmień dane oferty
+                    Change offer data
           </Button>
                 </Form>
               </ModalBody>
             </Modal>
 
-            <NavLink tag={RRNavLink} to={`/admin/${type}/${_id}`}
-              target={"_top"}
-            >
-              <div style={{ overflow: "hidden", position: "relative" }}>
-                <CardImg top src={image} className="card-image"
-                  height="200"
-                />
-                <div className="price">{price}</div>
-                <div className="price" style={{ width: "100%" }}></div>
-              </div>
-              <CardBody>
-                <CardTitle style={{ height: "2.4em" }}><strong>{title}</strong> </CardTitle>
-                <div className="block-with-text" dangerouslySetInnerHTML={{ __html: sanitizer(description) }}></div>
-              </CardBody>
+            <div style={{ position: "relative" }}>
+              <CardImg top src={image}
+                height="200"
+              />
+              <div className="price">{price}</div>
+              <div className="price" style={{ width: "100%" }}></div>
+            </div>
+            <CardBody>
+              <CardTitle style={{ height: "2.4em" }}><strong>{title}</strong> </CardTitle>
+              <div className="block-with-text" dangerouslySetInnerHTML={{ __html: sanitizer(description) }}></div>
+            </CardBody>
 
-              <CardFooter className="offer-footer">
-                <div style={{ margin: "auto 0" }}>{departureDate.slice(0, -14)}</div>
-                <div style={{ textAlign: "end", margin: "auto 0" }}>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
-              </CardFooter>
-            </NavLink>
-
+            <CardFooter className="offer-footer">
+              <div style={{ margin: "auto 0" }}>{departureDate.slice(0, -14)}</div>
+              <div style={{ textAlign: "end", margin: "auto 0" }}>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
+            </CardFooter>
           </Card>
-
         </Col>
       ))}
   </CardGroup>;
 
   return (
     <Container fluid={true} className="content-wrap" style={{ paddingLeft: "0", paddingRight: "0" }}>
-
-      <Button onClick={onFilter('')}>
-        All
-      </Button>
-
-
       {navOffer}
       {cardList}
-      {/* {renderPageNumbers} */}
-
-      {/* <OfferModal /> */}
-
     </Container>
   );
 }
 
-
-
-EditOffers.propTypes = {
-  offers: PropTypes.array.isRequired,
-  getOffers: PropTypes.func.isRequired
+ChangeOffers.propTypes = {
+  getOffers: PropTypes.func.isRequired,
+  offers: PropTypes.array.isRequired
 }
+
+
+const AddOffers = ({ addOffer }) => {
+  const [modal, setModal] = useState(false);
+  const [fileData, setFileData] = useState(null);
+  const [offerData, setOfferData] = useState({
+    title: '',
+    departureDate: '',
+    departureTime: '',
+    price: '',
+    tripLocation: '',
+    type: 'individual',
+    description: ''
+  })
+
+  const toggle = () => {
+    setModal(!modal);
+  };
+
+  const onChangeFile = e => {
+    setFileData(e.target.files[0]);
+  };
+
+  const onChangeText = e => {
+    setOfferData({
+      ...offerData,
+      [e.target.name]: e.target.value
+    });
+  }
+
+  const onSubmit = e => {
+    e.preventDefault();
+
+    const newOffer = new FormData();
+    newOffer.append('offer', fileData);
+
+    const { departureDate, departureTime, price, tripLocation, type, description, title } = offerData;
+    newOffer.append('title', title);
+    newOffer.append('departureDate', departureDate);
+    newOffer.append('departureTime', departureTime);
+    newOffer.append('price', price);
+    newOffer.append('tripLocation', tripLocation);
+    newOffer.append('type', type);
+    newOffer.append('description', description);
+
+
+    addOffer(newOffer);
+
+    setFileData(null);
+
+    // Close modal
+    toggle();
+  }
+  return (
+    <div style={{ position: "relative" }}>
+      <Button
+        color="info"
+        size="md"
+        onClick={toggle}
+        style={{ zIndex: "1000" }}
+      >Add offer
+        </Button>
+
+
+      <Modal
+        className="open-offer-modal"
+        isOpen={modal}
+        toggle={toggle}
+        size="lg"
+      >
+        <ModalHeader toggle={toggle}>Add offer</ModalHeader>
+        <ModalBody>
+          <Form onSubmit={onSubmit}>
+            <FormGroup>
+              <Label for="departureDate">Departure date</Label>
+              <Input
+                type="date"
+                name="departureDate"
+                id="departureDate"
+                placeholder="Add departure date..."
+                onChange={onChangeText}
+              />
+              <Label for="departureTime">Departure hour</Label>
+              <Input
+                type="text"
+                name="departureTime"
+                id="departureTime"
+                placeholder="Add departure hour..."
+                onChange={onChangeText}
+              />
+              <Label for="price">Price</Label>
+              <Input
+                type="text"
+                name="price"
+                id="price"
+                placeholder="Add price..."
+                onChange={onChangeText}
+              />
+              <Label for="tripLocation">Trip location</Label>
+              <Input
+                type="text"
+                name="tripLocation"
+                id="tripLocation"
+                placeholder="Add trip location..."
+                onChange={onChangeText}
+              />
+            </FormGroup>
+
+
+            <FormGroup tag="fieldset">
+              <legend>Offer type</legend>
+              <Row style={{ justifyContent: "space-evenly" }}>
+                <FormGroup check  >
+                  <Label check for="type1">
+                    <Input
+                      checked={offerData.type === "individual"}
+                      type="radio"
+                      name="type"
+                      id="type1"
+                      value="individual"
+                      onChange={onChangeText}
+                    />
+                    Individual
+              </Label>
+                </FormGroup>
+                <FormGroup check >
+                  <Label check for="type2">
+                    <Input
+                      checked={offerData.type === "bussiness-trips"}
+                      type="radio"
+                      name="type"
+                      id="type2"
+                      value="bussiness-trips"
+                      onChange={onChangeText}
+                    />
+                    Bussiness trips
+              </Label>
+                </FormGroup>
+                <FormGroup check >
+                  <Label check for="type3">
+                    <Input
+                      checked={offerData.type === "field-trips"}
+                      type="radio"
+                      name="type"
+                      id="type3"
+                      value="field-trips"
+                      onChange={onChangeText}
+                    />
+                    Field trips
+              </Label>
+                </FormGroup>
+              </Row>
+              <Row style={{ justifyContent: "space-evenly" }}>
+                <FormGroup check >
+                  <Label check for="type4">
+                    <Input
+                      checked={offerData.type === "school-trips"}
+                      type="radio"
+                      name="type"
+                      id="type4"
+                      value="school-trips"
+                      onChange={onChangeText}
+                    />
+                    School trips
+              </Label>
+                </FormGroup>
+                <FormGroup check >
+                  <Label check for="type5">
+                    <Input
+                      checked={offerData.type === "pilgrims"}
+                      type="radio"
+                      name="type"
+                      id="type5"
+                      value="pilgrims"
+                      onChange={onChangeText}
+                    />
+                    Pilgrims
+              </Label>
+                </FormGroup>
+                <FormGroup check >
+                  <Label check for="type6">
+                    <Input
+                      checked={offerData.type === "summer-camps"}
+                      type="radio"
+                      name="type"
+                      id="type6"
+                      value="summer-camps"
+                      onChange={onChangeText}
+                    />
+                    Summer camps
+              </Label>
+                </FormGroup>
+              </Row>
+            </FormGroup>
+            <Label for="title">Offer title</Label>
+            <Input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Name the offer..."
+              className="mb-3"
+              onChange={onChangeText}
+            />
+            <Label for="description">Offer description</Label>
+            <Input
+              type="textarea"
+              name="description"
+              id="description"
+              placeholder="Describe the offer..."
+              className="mb-3"
+              onChange={onChangeText}
+            />
+            <CustomInput
+              type="file"
+              name="offer"
+              id="offer"
+              label="Choose offer image..."
+              onChange={onChangeFile}
+            />
+
+
+            <Button
+              color="dark"
+              disabled={fileData === null}
+              style={{ marginTop: '2rem' }}
+              block>
+              Add offer
+                </Button>
+          </Form>
+        </ModalBody>
+      </Modal>
+    </div>
+  );
+}
+
 
 const mapStateToProps = (state) => ({
   offers: state.offer.offers
 });
 
-export default connect(
-  mapStateToProps,
-  { deleteOffer, updateOffer, getOffers }
-)(EditOffers);
+export default {
+  ChangeOffers: connect(
+    mapStateToProps,
+    { deleteOffer, updateOffer, getOffers }
+  )(ChangeOffers),
+  AddOffers: connect(
+    mapStateToProps,
+    { addOffer }
+  )(AddOffers)
+}

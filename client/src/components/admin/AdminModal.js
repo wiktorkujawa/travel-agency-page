@@ -90,7 +90,10 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
           {match.params.type === "announcements" ? <EditAnnouncements.AddAnnouncements /> :
             match.params.type === "faq" ? <EditFAQ.AddQuestion /> :
               match.params.type === "gallery" ? <EditGallery.AddGallery /> :
-                match.params.type === "slider" ? <EditSlide.AddSlide /> : null}
+                match.params.type === "slider" ? <EditSlide.AddSlide /> :
+                  match.params.type === "tourist-trips" ? <EditOffers.AddOffers />
+                    : null
+          }
 
         </NavItem>
         <NavItem>
@@ -117,7 +120,7 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
               match.params.type === "contact" ? <EditContact /> :
                 match.params.type === "slider" ? <EditSlide.ChangeSlide /> :
                   // match.params.type === "tourist-trips" ? <a href={`${match.path.split("admin-modal", 1)}tourist-trips`} style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%" }}>Go to offers list</a>
-                  match.params.type === "tourist-trips" ? <EditOffers />
+                  match.params.type === "tourist-trips" ? <EditOffers.ChangeOffers />
                     : null
     }
   </div>;

@@ -265,13 +265,11 @@ const AddGallery = ({ addPhoto }) => {
 
 ChangeGallery.propTypes = {
   getPhotos: PropTypes.func.isRequired,
-  photos: PropTypes.array.isRequired,
-  isAuthenticated: PropTypes.bool
+  photos: PropTypes.array.isRequired
 }
 
 const mapStateToProps = (state) => ({
   photos: state.photo.photos,
-  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default {
