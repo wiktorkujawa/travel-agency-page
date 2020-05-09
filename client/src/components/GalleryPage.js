@@ -95,7 +95,7 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
           lg="3"
           xl="2"
         >
-          <GalleryItem photosOnPage={photosOnPage} index={index} modal={modal} previousPhoto={previousPhoto} nextPhoto={nextPhoto} toggle={toggle} />
+          <GalleryItem photos={photosOnPage} index={index} modal={modal} previousPhoto={previousPhoto} nextPhoto={nextPhoto} toggle={toggle} />
         </Col>
       ))}
 
