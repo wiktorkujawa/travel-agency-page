@@ -19,6 +19,8 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
   const indexOfLastPage = currentPage * photosPerPage;
   const indexOfFirstPage = indexOfLastPage - photosPerPage;
 
+  const photosOnPage = photos.slice(indexOfFirstPage, indexOfLastPage)
+
   const changePage = (event) => {
     setCurrentPage(Number(event.target.id));
   }
@@ -85,15 +87,15 @@ const GalleryPage = ({ photos, getPhotos, match }) => {
         <CardBody style={{ textAlign: "center", fontStyle: "italic" }}>Temporary no photos</CardBody>
       </Card>
       :
-      photos.slice(indexOfFirstPage, indexOfLastPage).map(({ files_id, image, tripLocation, description }, index) => (
+      photosOnPage.map((photosOnPage, index) => (
         <Col style={{ padding: "0" }}
-          key={files_id}
+          key={photosOnPage.files_id}
           sm="6"
           md="4"
           lg="3"
           xl="2"
         >
-          <GalleryItem description={description} tripLocation={tripLocation} index={index} image={image} modal={modal} previousPhoto={previousPhoto} nextPhoto={nextPhoto} toggle={toggle} />
+          <GalleryItem photosOnPage={photosOnPage} index={index} modal={modal} previousPhoto={previousPhoto} nextPhoto={nextPhoto} toggle={toggle} />
         </Col>
       ))}
 

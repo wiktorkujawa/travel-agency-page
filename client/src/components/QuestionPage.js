@@ -13,7 +13,6 @@ const QuestionPage = ({ getQuestions, questions }) => {
     getQuestions()
   }, [getQuestions])
 
-
   return (
     <Container fluid={true} className="content-wrap">
       <ListGroup className="mb-5">

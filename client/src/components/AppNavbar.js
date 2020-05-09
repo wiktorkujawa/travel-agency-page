@@ -1,4 +1,4 @@
-import React, { useState, Fragment, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Collapse,
   Navbar,
@@ -36,7 +36,7 @@ const AppNavbar = ({ getContact, getOffers, contacts, isAuthenticated }) => {
   }
 
   const upperNavbar =
-    <Fragment>
+    <>
       <NavbarToggler onClick={toggle} ></NavbarToggler>
       {contacts.map(({ _id, workTime, email, phoneNumber }) => (
         <Nav key={_id} navbar className="ml-xs-auto ml-md-auto mb-2">
@@ -63,7 +63,7 @@ const AppNavbar = ({ getContact, getOffers, contacts, isAuthenticated }) => {
         </Nav>
       ))
       }
-    </Fragment>
+    </>
 
   const lowerNavbar = <Collapse isOpen={isOpen} navbar style={{ textAlign: "center" }} className=" mx-lg-auto mx-xs-auto mb-2">
 

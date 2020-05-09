@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect } from 'react';
 import AppNavbar from './components/AppNavbar'
 import OfferList from './components/OfferList';
 import SingleOffer from './components/SingleOffer';
@@ -30,7 +30,7 @@ import AdminModal from './components/admin/AdminModal';
 
 const PublicRoute = ({ component: Component, ...rest }) => {
   return (
-    <Fragment>
+    <>
       <NavLink href="https://github.com/wiktorkujawa/" className="social-card" target={"_blank"}>
         <i className="fa fa-github fa-4x" aria-hidden="true"></i>
       </NavLink>
@@ -42,7 +42,7 @@ const PublicRoute = ({ component: Component, ...rest }) => {
         </div>
       )}
       />
-    </Fragment>
+    </>
   )
 }
 const AdminRoute = ({ component: Component, ...rest }) => {

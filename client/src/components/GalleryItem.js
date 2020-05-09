@@ -6,7 +6,7 @@ import {
   Card, CardImg, CardBody,
   CardText
 } from 'reactstrap';
-const GalleryItem = ({ description, tripLocation, index, previousPhoto, nextPhoto, image, modal, toggle }) => {
+const GalleryItem = ({ photosOnPage: { description, tripLocation, image }, index, previousPhoto, nextPhoto, modal, toggle }) => {
 
   return (
     <Card className="fadein-elements">
