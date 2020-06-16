@@ -11,7 +11,11 @@ import {
 
 import EditAbout from './EditAbout';
 import EditInsurance from './EditInsurance';
-import EditAnnouncements from './EditAnnouncements';
+import ChangeAnnouncements from './EditAnnouncements/ChangeAnnouncements';
+import AddAnnouncement from './EditAnnouncements/AddAnnouncement';
+
+
+
 import EditFAQ from './EditFAQ';
 import EditGallery from './EditGallery';
 import EditContact from './EditContact';
@@ -87,7 +91,8 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
           </span>
         </NavItem>
         <NavItem>
-          {match.params.type === "announcements" ? <EditAnnouncements.AddAnnouncements /> :
+          {
+          match.params.type === "announcements" ? <AddAnnouncement /> :
             match.params.type === "faq" ? <EditFAQ.AddQuestion /> :
               match.params.type === "gallery" ? <EditGallery.AddGallery /> :
                 match.params.type === "slider" ? <EditSlide.AddSlide /> :
@@ -114,7 +119,7 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
     {authLinks}
     {match.params.type === "about" ? <EditAbout /> :
       match.params.type === "insurance" ? <EditInsurance /> :
-        match.params.type === "announcements" ? <EditAnnouncements.ChangeAnnouncements /> :
+        match.params.type === "announcements" ? <ChangeAnnouncements /> :
           match.params.type === "faq" ? <EditFAQ.ChangeQuestion /> :
             match.params.type === "gallery" ? <EditGallery.ChangeGallery /> :
               match.params.type === "contact" ? <EditContact /> :

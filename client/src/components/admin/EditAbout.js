@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { getContent, updateContent } from '../../actions/contentActions';
 import PropTypes from 'prop-types';
 
-const About = ({ getContent, contents, updateContent }) => {
+const EditAbout = ({ getContent, contents, updateContent }) => {
   const [Content, setContent] = useState({});
 
   useEffect(() => {
@@ -74,7 +74,7 @@ const About = ({ getContent, contents, updateContent }) => {
   );
 }
 
-About.propTypes = {
+EditAbout.propTypes = {
   getContent: PropTypes.func.isRequired,
   contents: PropTypes.array.isRequired,
   isAuthenticated: PropTypes.bool
@@ -88,4 +88,4 @@ const mapStateToProps = (state) => ({
 export default connect(
   mapStateToProps,
   { getContent, updateContent }
-)(About);
+)(EditAbout);

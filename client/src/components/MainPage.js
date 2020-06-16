@@ -50,7 +50,6 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
     );
   };
 
-  console.log(showOffers);
 
   const next = () => {
     if (animating) return;
