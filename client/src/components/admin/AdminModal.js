@@ -11,16 +11,17 @@ import {
 
 import EditAbout from './EditAbout';
 import EditInsurance from './EditInsurance';
-import ChangeAnnouncements from './EditAnnouncements/ChangeAnnouncements';
-import AddAnnouncement from './EditAnnouncements/AddAnnouncement';
 
-
+import ChangeAnnouncements from './Announcements/ChangeAnnouncements';
+import AddAnnouncement from './Announcements/AddAnnouncement';
 
 import EditFAQ from './EditFAQ';
 import EditGallery from './EditGallery';
 import EditContact from './EditContact';
 import EditSlide from './EditSlide';
-import EditOffers from './EditOffers';
+
+import ChangeOffers from './Offers/ChangeOffers';
+import AddOffer from './Offers/AddOffer';
 
 import RegisterModal from '../auth/RegisterModal';
 import ChangePassword from '../auth/ChangePassword';
@@ -96,8 +97,8 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
             match.params.type === "faq" ? <EditFAQ.AddQuestion /> :
               match.params.type === "gallery" ? <EditGallery.AddGallery /> :
                 match.params.type === "slider" ? <EditSlide.AddSlide /> :
-                  match.params.type === "tourist-trips" ? <EditOffers.AddOffers />
-                    : null
+                  match.params.type === "tourist-trips" ? <AddOffer /> : 
+                    null
           }
 
         </NavItem>
@@ -124,9 +125,8 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
             match.params.type === "gallery" ? <EditGallery.ChangeGallery /> :
               match.params.type === "contact" ? <EditContact /> :
                 match.params.type === "slider" ? <EditSlide.ChangeSlide /> :
-                  // match.params.type === "tourist-trips" ? <a href={`${match.path.split("admin-modal", 1)}tourist-trips`} style={{ textAlign: "center", position: "absolute", top: "50%", left: "50%" }}>Go to offers list</a>
-                  match.params.type === "tourist-trips" ? <EditOffers.ChangeOffers />
-                    : null
+                  match.params.type === "tourist-trips" ? <ChangeOffers /> : 
+                    null
     }
   </div>;
 
