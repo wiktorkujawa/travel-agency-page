@@ -8,7 +8,6 @@ import { getAnnouncements } from '../actions/announcementActions';
 import PropTypes from 'prop-types';
 
 const AnnouncementPage = ({ getAnnouncements, announcements }) => {
-
   //initial pagination settings
   const offersPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +22,6 @@ const AnnouncementPage = ({ getAnnouncements, announcements }) => {
   useEffect(() => {
     getAnnouncements()
   }, [getAnnouncements])
-
 
   //Events functions
   const changePage = (event) => {
@@ -62,7 +60,6 @@ const AnnouncementPage = ({ getAnnouncements, announcements }) => {
         ))}
     </TransitionGroup>
   </ListGroup>;
-
 
   return (
     <Container fluid={true} className="content-wrap">

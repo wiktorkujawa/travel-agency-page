@@ -101,7 +101,6 @@ ChangeOffers.propTypes = {
   offers: PropTypes.array.isRequired
 }
 
-
 const mapStateToProps = (state) => ({
   offers: state.offer.offers
 });

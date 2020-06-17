@@ -16,7 +16,10 @@ import ChangeAnnouncements from './Announcements/ChangeAnnouncements';
 import AddAnnouncement from './Announcements/AddAnnouncement';
 
 import EditFAQ from './EditFAQ';
+
 import EditGallery from './EditGallery';
+import AddPhoto from './Gallery/AddPhoto';
+
 import EditContact from './EditContact';
 import EditSlide from './EditSlide';
 
@@ -95,7 +98,7 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
           {
           match.params.type === "announcements" ? <AddAnnouncement /> :
             match.params.type === "faq" ? <EditFAQ.AddQuestion /> :
-              match.params.type === "gallery" ? <EditGallery.AddGallery /> :
+              match.params.type === "gallery" ? <AddPhoto /> :
                 match.params.type === "slider" ? <EditSlide.AddSlide /> :
                   match.params.type === "tourist-trips" ? <AddOffer /> : 
                     null

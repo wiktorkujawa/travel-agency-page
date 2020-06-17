@@ -60,7 +60,6 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
   return (
     <div>
       {isAuthenticated ?
-
         <Button
           className="slide-modify"
           style={{ marginLeft: "-3rem" }}
@@ -85,27 +84,21 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
               <Label for="header">Header</Label>
               <Input
                 type="text"
-                name="header"
-                id="header"
-                placeholder="Add header..."
+                name="header" id="header" placeholder="Add header..."
                 className="mb-3"
                 onChange={onChangeText}
               />
               <Label for="caption">Caption</Label>
               <Input
                 type="text"
-                name="caption"
-                id="caption"
-                placeholder="Add caption"
+                name="caption" id="caption" placeholder="Add caption"
                 className="mb-3"
                 onChange={onChangeText}
               />
 
               <CustomInput
                 type="file"
-                name="slide"
-                id="slide"
-                label="Add slide image..."
+                name="slide" id="slide" label="Add slide image..."
                 onChange={onChangeImage}
               />
 

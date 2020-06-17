@@ -55,11 +55,9 @@ const AddOffer = ({ addOffer }) => {
     newOffer.append('type', type);
     newOffer.append('description', description);
 
-
     addOffer(newOffer);
 
     setFileData(null);
-
     // Close modal
     toggle();
   }
@@ -72,7 +70,6 @@ const AddOffer = ({ addOffer }) => {
         style={{ zIndex: "1000" }}
       >Add offer
         </Button>
-
 
       <Modal
         className="open-offer-modal"
@@ -87,37 +84,27 @@ const AddOffer = ({ addOffer }) => {
               <Label for="departureDate">Departure date</Label>
               <Input
                 type="date"
-                name="departureDate"
-                id="departureDate"
-                placeholder="Add departure date..."
+                name="departureDate" id="departureDate" placeholder="Add departure date..."
                 onChange={onChangeText}
               />
               <Label for="departureTime">Departure hour</Label>
               <Input
-                type="text"
-                name="departureTime"
-                id="departureTime"
-                placeholder="Add departure hour..."
+                type="text" name="departureTime" id="departureTime" placeholder="Add departure hour..."
                 onChange={onChangeText}
               />
               <Label for="price">Price</Label>
               <Input
                 type="text"
-                name="price"
-                id="price"
-                placeholder="Add price..."
+                name="price" id="price" placeholder="Add price..."
                 onChange={onChangeText}
               />
               <Label for="tripLocation">Trip location</Label>
               <Input
                 type="text"
-                name="tripLocation"
-                id="tripLocation"
-                placeholder="Add trip location..."
+                name="tripLocation" id="tripLocation" placeholder="Add trip location..."
                 onChange={onChangeText}
               />
             </FormGroup>
-
 
             <FormGroup tag="fieldset">
               <legend>Offer type</legend>
@@ -127,9 +114,7 @@ const AddOffer = ({ addOffer }) => {
                     <Input
                       checked={offerData.type === "individual"}
                       type="radio"
-                      name="type"
-                      id="type1"
-                      value="individual"
+                      name="type" id="type1" value="individual"
                       onChange={onChangeText}
                     />
                     Individual
@@ -140,9 +125,7 @@ const AddOffer = ({ addOffer }) => {
                     <Input
                       checked={offerData.type === "bussiness-trips"}
                       type="radio"
-                      name="type"
-                      id="type2"
-                      value="bussiness-trips"
+                      name="type" id="type2" value="bussiness-trips"
                       onChange={onChangeText}
                     />
                     Bussiness trips
@@ -153,9 +136,7 @@ const AddOffer = ({ addOffer }) => {
                     <Input
                       checked={offerData.type === "field-trips"}
                       type="radio"
-                      name="type"
-                      id="type3"
-                      value="field-trips"
+                      name="type" id="type3" value="field-trips"
                       onChange={onChangeText}
                     />
                     Field trips
@@ -168,9 +149,7 @@ const AddOffer = ({ addOffer }) => {
                     <Input
                       checked={offerData.type === "school-trips"}
                       type="radio"
-                      name="type"
-                      id="type4"
-                      value="school-trips"
+                      name="type" id="type4" value="school-trips"
                       onChange={onChangeText}
                     />
                     School trips
@@ -181,9 +160,7 @@ const AddOffer = ({ addOffer }) => {
                     <Input
                       checked={offerData.type === "pilgrims"}
                       type="radio"
-                      name="type"
-                      id="type5"
-                      value="pilgrims"
+                      name="type" id="type5" value="pilgrims"
                       onChange={onChangeText}
                     />
                     Pilgrims
@@ -194,9 +171,7 @@ const AddOffer = ({ addOffer }) => {
                     <Input
                       checked={offerData.type === "summer-camps"}
                       type="radio"
-                      name="type"
-                      id="type6"
-                      value="summer-camps"
+                      name="type" id="type6" value="summer-camps"
                       onChange={onChangeText}
                     />
                     Summer camps
@@ -207,26 +182,20 @@ const AddOffer = ({ addOffer }) => {
             <Label for="title">Offer title</Label>
             <Input
               type="text"
-              name="title"
-              id="title"
-              placeholder="Name the offer..."
+              name="title" id="title" placeholder="Name the offer..."
               className="mb-3"
               onChange={onChangeText}
             />
             <Label for="description">Offer description</Label>
             <Input
               type="textarea"
-              name="description"
-              id="description"
-              placeholder="Describe the offer..."
+              name="description" id="description" placeholder="Describe the offer..."
               className="mb-3"
               onChange={onChangeText}
             />
             <CustomInput
               type="file"
-              name="offer"
-              id="offer"
-              label="Choose offer image..."
+              name="offer" id="offer" label="Choose offer image..."
               onChange={onChangeFile}
             />
 

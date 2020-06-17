@@ -20,15 +20,13 @@ import MainPageModal from './MainPageModal';
 import dompurify from 'dompurify';
 import { Waypoint } from 'react-waypoint';
 
-
-
 const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) => {
-
   const sanitizer = dompurify.sanitize;
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-
   const [showOffers, setShowOffers] = useState(false);
+
   useEffect(() => {
     getSlides();
   }, [getSlides]);
@@ -50,7 +48,6 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
     );
   };
 
-
   const next = () => {
     if (animating) return;
     const nextIndex = activeIndex === slides.length - 1 ? 0 : activeIndex + 1;
@@ -71,7 +68,6 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
     <div className="last-offers-title" >
       Last offers
     </div>
-
     <CardGroup className="pt-5" style={{ backgroundColor: "#DDDDDD" }} >
       {!(Array.isArray(offers) && offers.length) ?
         <Card className="mt-5 mb-5">
@@ -105,9 +101,7 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
                   <div style={{ textAlign: "end", margin: "auto 0" }}>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
                 </CardFooter>
               </NavLink>
-
             </Card>
-
           </Col>
         ))}
     </CardGroup>
@@ -134,7 +128,6 @@ const MainPage = ({ getSlides, deleteSlide, slides, offers, isAuthenticated }) =
           </Button> : null}
             <MainPageModal />
           </div>
-
           <CarouselCaption captionText={caption} captionHeader={header} />
         </CarouselItem>
       );
