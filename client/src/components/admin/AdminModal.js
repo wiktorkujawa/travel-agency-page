@@ -15,9 +15,12 @@ import EditInsurance from './EditInsurance';
 import ChangeAnnouncements from './Announcements/ChangeAnnouncements';
 import AddAnnouncement from './Announcements/AddAnnouncement';
 
-import EditFAQ from './EditFAQ';
+// import EditFAQ from './EditFAQ';
 
-import EditGallery from './EditGallery';
+import ChangeQuestions from './FAQ/ChangeQuestions';
+import AddQuestion from './FAQ/AddQuestion';
+
+import ChangePhotos from './Gallery/ChangePhotos';
 import AddPhoto from './Gallery/AddPhoto';
 
 import EditContact from './EditContact';
@@ -97,7 +100,7 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
         <NavItem>
           {
           match.params.type === "announcements" ? <AddAnnouncement /> :
-            match.params.type === "faq" ? <EditFAQ.AddQuestion /> :
+            match.params.type === "faq" ? <AddQuestion /> :
               match.params.type === "gallery" ? <AddPhoto /> :
                 match.params.type === "slider" ? <EditSlide.AddSlide /> :
                   match.params.type === "tourist-trips" ? <AddOffer /> : 
@@ -124,8 +127,8 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
     {match.params.type === "about" ? <EditAbout /> :
       match.params.type === "insurance" ? <EditInsurance /> :
         match.params.type === "announcements" ? <ChangeAnnouncements /> :
-          match.params.type === "faq" ? <EditFAQ.ChangeQuestion /> :
-            match.params.type === "gallery" ? <EditGallery.ChangeGallery /> :
+          match.params.type === "faq" ? <ChangeQuestions /> :
+            match.params.type === "gallery" ? <ChangePhotos /> :
               match.params.type === "contact" ? <EditContact /> :
                 match.params.type === "slider" ? <EditSlide.ChangeSlide /> :
                   match.params.type === "tourist-trips" ? <ChangeOffers /> : 

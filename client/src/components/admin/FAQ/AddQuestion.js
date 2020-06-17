@@ -8,14 +8,14 @@ import {
   Input
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { addAnnouncement } from '../../../actions/announcementActions';
+import { addQuestion } from '../../../actions/questionActions';
 
-const AddAnnouncement = ({ addAnnouncement }) => {
+const AddQuestion = ({ addQuestion }) => {
 
   const [modal, setModal] = useState(false);
-  const [announcementName, setAnnouncementName] = useState({
-    name: '',
-    content: ''
+  const [questionName, setQuestionName] = useState({
+    question: '',
+    answer: ''
   });
 
 
@@ -24,17 +24,17 @@ const AddAnnouncement = ({ addAnnouncement }) => {
   };
 
   const onChange = e => {
-    setAnnouncementName({
-      ...announcementName,
+    setQuestionName({
+      ...questionName,
       [e.target.name]: e.target.value
     });
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    
-    // Add announcement via addAnnouncement action
-    addAnnouncement(announcementName);
+
+    // Add question via addQuestion action
+    addQuestion(questionName);
 
     // Close modal
     toggle();
@@ -46,38 +46,34 @@ const AddAnnouncement = ({ addAnnouncement }) => {
         size="md"
         onClick={toggle}
         style={{ zIndex: "1000" }}
-      >Add announcement
+      >Add question
           </Button>
 
       <Modal
         isOpen={modal}
         toggle={toggle}
       >
-        <ModalHeader toggle={toggle}>Add to announcement list</ModalHeader>
+        <ModalHeader toggle={toggle}>Add new question</ModalHeader>
         <ModalBody>
           <Form onSubmit={onSubmit}>
             <FormGroup>
-              <Label for="name">Header</Label>
+              <Label for="question">Question</Label>
               <Input
                 type="text"
-                name="name"
-                id="name"
-                placeholder="Add header..."
+                name="question" id="question" placeholder="Add question..."
                 onChange={onChange}
               />
-              <Label for="content">Content</Label>
+              <Label for="answer">Answer</Label>
               <Input
-                type="textarea"
-                name="content"
-                id="content"
-                placeholder="Add content..."
+                type="text"
+                name="answer" id="answer" placeholder="Add answer..."
                 onChange={onChange}
               />
               <Button
                 color="dark"
                 style={{ marginTop: '2rem' }}
                 block>
-                Add announcement
+                Add question and answer
                 </Button>
             </FormGroup>
           </Form>
@@ -88,9 +84,9 @@ const AddAnnouncement = ({ addAnnouncement }) => {
 }
 
 const mapStateToProps = (state) => ({
-  announcements: state.announcement.announcements
+  questions: state.question.questions
 });
 
 export default connect(
     mapStateToProps,
-    { addAnnouncement })(AddAnnouncement)
+    { addQuestion })(AddQuestion)

@@ -54,19 +54,10 @@ const ChangeItem = ({
   const onSubmit = (id) => {
     return (event) => {
       event.preventDefault();
-      if (fileData != null) {
+      if (fileData) {
         const newOffer = new FormData();
         newOffer.append('offer', fileData);
-
-        const { title, departureDate, departureTime, price, tripLocation, type, description } = offer;
-
-        newOffer.append('title', title);
-        newOffer.append('departureDate', departureDate);
-        newOffer.append('departureTime', departureTime);
-        newOffer.append('price', price);
-        newOffer.append('tripLocation', tripLocation);
-        newOffer.append('type', type);
-        newOffer.append('description', description);
+        Object.keys(offer).map( key => newOffer.append(key,offer[key]));
 
         // Update offer via addOffer action
         updateOffer(id, newOffer);
@@ -76,11 +67,8 @@ const ChangeItem = ({
         toggle();
       }
       else {
-        const { title, departureDate, departureTime, price, tripLocation, type, description } = offer;
-        const newOffer = { title, departureDate, departureTime, price, tripLocation, type, description };
-
         // Update offer via addOffer action
-        updateOffer(id, newOffer);
+        updateOffer(id, offer);
         // Close modal
         toggle();
       }

@@ -5,7 +5,7 @@ import {
   CardGroup, Col
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { deletePhoto, updatePhoto, getPhotos } from '../../../actions/galleryActions';
+import { getPhotos } from '../../../actions/galleryActions';
 import PropTypes from 'prop-types';
 import ChangeItem from './ChangeItem';
 
@@ -50,5 +50,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { deletePhoto, updatePhoto, getPhotos }
+    { getPhotos }
   )(ChangePhotos)

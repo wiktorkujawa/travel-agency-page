@@ -5,7 +5,7 @@ import {
   CardGroup, Col, NavItem, Nav
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { deleteOffer, updateOffer, getOffers } from '../../../actions/offerActions';
+import { getOffers } from '../../../actions/offerActions';
 import PropTypes from 'prop-types';
 import ChangeItem from './ChangeItem';
 
@@ -107,5 +107,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { deleteOffer, updateOffer, getOffers }
+    { getOffers }
   )(ChangeOffers)

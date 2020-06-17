@@ -28,11 +28,10 @@ const OfferList = ({ offers, match: { params, path } }) => {
   }, [params]);
 
   //Events functions
-
   const changePage = (event) => {
     setCurrentPage(Number(event.target.id));
   }
-
+  
   //rendered elements
   const navOffer = <Nav tabs className="align-items-center filter-nav shadow-box" >
     <NavItem className="choose-offer-type">

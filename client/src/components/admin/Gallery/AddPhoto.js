@@ -7,7 +7,7 @@ import {
   Modal,
   ModalBody,
   ModalHeader,
-  Row, CustomInput
+  CustomInput
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { addPhoto } from '../../../actions/galleryActions';
