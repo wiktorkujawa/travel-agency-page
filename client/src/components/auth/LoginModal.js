@@ -71,7 +71,7 @@ const LoginModal = ({ isAuthenticated, error, login, clearErrors }) => {
     <div>
       {!isAuthenticated ?
         <Modal
-          className="open-offer-modal"
+          className="show-modal"
           isOpen={modal}
           toggle={toggle}
         >

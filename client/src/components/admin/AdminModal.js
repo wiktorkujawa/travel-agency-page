@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   Container,
   Card, NavLink, NavItem, Nav, Navbar
@@ -139,10 +139,10 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
 
     <Container fluid={true} className="admin-container">
       {isAuthenticated ?
-        <Fragment>
+        <>
           {navOffer}
           {adminContent}
-        </Fragment>
+        </>
 
         : <Card style={{ textAlign: "center", margin: "auto", padding: "90px" }}>
           <a href={`${match.path.split("admin-modal", 1)}`} >Go to homepage</a>
