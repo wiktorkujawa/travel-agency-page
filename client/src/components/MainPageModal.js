@@ -74,7 +74,7 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
       <Modal
         isOpen={modal}
         toggle={toggle}
-        className="open-offer-modal"
+        className="show-modal"
       >
         <ModalHeader toggle={toggle}>Add new slides</ModalHeader>
         <ModalBody>

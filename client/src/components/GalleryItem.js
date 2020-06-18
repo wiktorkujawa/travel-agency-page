@@ -13,7 +13,7 @@ const GalleryItem = ({ photos: { description, tripLocation, image }, index, prev
       <Modal
         isOpen={modal[index]}
         toggle={toggle(index)}
-        className="open-offer-modal"
+        className="show-modal"
         size="lg"
       >
         <ModalBody style={{ padding: "0", textAlign: "center" }}>

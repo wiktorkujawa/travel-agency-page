@@ -72,7 +72,6 @@ const AddOffer = ({ addOffer }) => {
         </Button>
 
       <Modal
-        className="open-offer-modal"
         isOpen={modal}
         toggle={toggle}
         size="lg"

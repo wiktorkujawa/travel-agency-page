@@ -108,7 +108,7 @@ const EditInsurance = ({ getInsurance, insurances, updateInsurance, addInsurance
     <Modal
       isOpen={modal}
       toggle={toggle}
-      className="open-offer-modal"
+      className="show-modal"
     >
       <ModalHeader toggle={toggle}>Add Insurance</ModalHeader>
       <ModalBody>
