@@ -1,6 +1,6 @@
 {
-  "mongoURI": "mongodb+srv://wiktor:limaczek231407@wiktor-g12on.mongodb.net/travel-agency-page?retryWrites=true&w=majority",
+  "mongoURI": "YourMongoUri",
   "jwtSecret": "sl_myJwtSecret",
-  "email": "postmaster@travel-testing.com",
-  "password": "cee12e2e593bfa6fda32c4c38fe8a051-ee13fadb-a5fd3486"
+  "email": "mailAddressForReceivingPassword",
+  "password": "PasswordForAboveMailAddress"
 }
