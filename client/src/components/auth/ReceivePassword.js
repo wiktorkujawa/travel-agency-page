@@ -20,14 +20,12 @@ import {
 } from 'react-router-dom';
 
 const ReceivePassword = ({ receivePassword, error, clearErrors, match }) => {
-
   const [modal, setModal] = useState(true);
   const [enterPassword, setEnterPassword] = useState({
     newPassword: '',
     confirmNewPassword: ''
   });
   const [alertColor, setAlertColor] = useState(null);
-
   const [msg, setMsg] = useState(null);
 
   useEffect(() => {
@@ -37,7 +35,6 @@ const ReceivePassword = ({ receivePassword, error, clearErrors, match }) => {
       clearErrors();
     }
   }, [error, clearErrors]);
-
 
   const toggle = () => {
     setMsg(null);
@@ -86,18 +83,14 @@ const ReceivePassword = ({ receivePassword, error, clearErrors, match }) => {
               <Label for="newPassword">New password</Label>
               <Input
                 type="password"
-                name="newPassword"
-                id="newPassword"
-                placeholder="Insert new password..."
+                name="newPassword"  id="newPassword" placeholder="Insert new password..."
                 onChange={onChange}
               />
 
               <Label for="confirmNewPassword"> Confirm new password</Label>
               <Input
                 type="password"
-                name="confirmNewPassword"
-                id="confirmNewPassword"
-                placeholder="Confirm new password..."
+                name="confirmNewPassword" id="confirmNewPassword" placeholder="Confirm new password..."
                 onChange={onChange}
               />
               <Button
@@ -113,11 +106,9 @@ const ReceivePassword = ({ receivePassword, error, clearErrors, match }) => {
           target={"_top"}
         >Back to login site</NavLink>
       </Modal>
-
     </div>
   );
 }
-
 
 ReceivePassword.propTypes = {
   receivePassword: PropTypes.func.isRequired,

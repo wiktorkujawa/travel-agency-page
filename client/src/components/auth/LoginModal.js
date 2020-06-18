@@ -48,16 +48,11 @@ const LoginModal = ({ isAuthenticated, error, login, clearErrors }) => {
     }
   }, [error, toggle, isAuthenticated, modal]);
 
-
-
-
-
   const onChange = e => {
     setLoginData({
       ...loginData,
       [e.target.name]: e.target.value
     });
-
   };
 
   const onSubmit = e => {
@@ -136,7 +131,6 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
   error: state.error
 });
-
 
 export default connect(
   mapStateToProps,

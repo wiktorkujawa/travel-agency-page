@@ -61,7 +61,6 @@ const ResetPassword = ({ resetPassword, error, clearErrors }) => {
     resetPassword(sendEmail);
   }
 
-
   return (
     <div>
       <Modal
@@ -78,9 +77,7 @@ const ResetPassword = ({ resetPassword, error, clearErrors }) => {
               <Label for="email">Email</Label>
               <Input
                 type="email"
-                name="email"
-                id="email"
-                placeholder="Insert email..."
+                name="email" id="email" placeholder="Insert email..."
                 onChange={onChange}
               />
               <Button
@@ -96,7 +93,6 @@ const ResetPassword = ({ resetPassword, error, clearErrors }) => {
     </div>
   );
 }
-
 
 ResetPassword.propTypes = {
   resetPassword: PropTypes.func.isRequired,

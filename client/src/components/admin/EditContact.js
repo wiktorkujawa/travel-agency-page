@@ -57,19 +57,15 @@ const AppNavbar = ({ getContact, contacts, updateContact }) => {
                   <Label for="contact">Work hours</Label>
                   <Input
                     type="textarea"
-                    name="workTime"
-                    id="contact"
+                    name="workTime" id="contact" placeholder="Change work hours..."
                     defaultValue={workTime}
-                    placeholder="Change work hours..."
                     onChange={onChange}
                   />
                   <Label for="contact">Email</Label>
                   <Input
                     type="textarea"
-                    name="email"
-                    id="contact"
+                    name="email" id="contact" placeholder="Change email address..."
                     defaultValue={email}
-                    placeholder="Change email address..."
                     onChange={onChange}
                   />
                 </div>
@@ -77,19 +73,15 @@ const AppNavbar = ({ getContact, contacts, updateContact }) => {
                   <Label for="contact">Phone numbers</Label>
                   <Input
                     type="textarea"
-                    name="phoneNumber"
-                    id="contact"
+                    name="phoneNumber" id="contact" placeholder="Insert phone numbers..."
                     defaultValue={phoneNumber}
-                    placeholder="Insert phone numbers..."
                     onChange={onChange}
                   />
                   <Label for="contact">Office location</Label>
                   <Input
                     type="textarea"
-                    name="address"
-                    id="contact"
+                    name="address" id="contact" placeholder="Insert office location..."
                     defaultValue={address}
-                    placeholder="Insert office location..."
                     onChange={onChange}
                   />
                 </div>
@@ -116,7 +108,6 @@ AppNavbar.propTypes = {
 const mapStateToProps = state => ({
   contacts: state.contact.contacts
 });
-
 
 export default connect(mapStateToProps,
   { getContact, updateContact }

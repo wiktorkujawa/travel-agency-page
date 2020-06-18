@@ -27,8 +27,6 @@ const Footer = ({ contacts }) => {
     ))}
   </div >
 
-
-
   const SugestedTrips =
     <div className="mb-4 shadow-box footer-suggested-trips">
       <h5 style={{ borderBottom: "1px solid #B0CEDB", textAlign: "center" }}>Suggested locations <br></br> country and international</h5>
@@ -65,10 +63,9 @@ const Footer = ({ contacts }) => {
 
         <NavLink className="footer-logo" href="/"><img src="/main.png" width="256" height="118" alt="" /></NavLink>
 
-
         <Container fluid={true} className="author-footer">
           © 2020 Travel Agency Page. All rights reserved. Designed by Wiktor Kujawa
-      </Container>
+        </Container>
       </Container>
     </footer>
   )
@@ -81,7 +78,6 @@ Footer.propTypes = {
 const mapStateToProps = state => ({
   contacts: state.contact.contacts,
 });
-
 
 export default connect(mapStateToProps,
   null)(Footer);

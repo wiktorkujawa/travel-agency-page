@@ -116,23 +116,16 @@ const EditInsurance = ({ getInsurance, insurances, updateInsurance, addInsurance
           <FormGroup>
             <Input
               type="textarea"
-              name="name"
-              id="name"
-              placeholder="Add main info..."
+              name="name" id="name" placeholder="Add main info..."
               onChange={onInit}
             />
-
           </FormGroup>
           <CustomInput
             type="file"
-            name="photo"
-            id="photo"
+            name="photo" id="photo" label="Add insurance image..."
             multiple
-            label="Add insurance image..."
             onChange={onInitFile}
           />
-
-
           <Button
             color="dark"
             disabled={fileData === null}
@@ -158,17 +151,13 @@ const EditInsurance = ({ getInsurance, insurances, updateInsurance, addInsurance
               <FormGroup>
                 <Input
                   type="textarea"
-                  name="name"
-                  id="name"
+                  name="name" id="name" placeholder="Add main info..."
                   defaultValue={name}
-                  placeholder="Add main info..."
                   onChange={onChange}
                 />
                 <CustomInput
                   type="file"
-                  name="insurance"
-                  id="insurance"
-                  label="Choose insurance certificate image..."
+                  name="insurance" id="insurance" label="Choose insurance certificate image..."
                   onChange={onChangeFile}
                 />
                 <Button

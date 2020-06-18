@@ -11,7 +11,6 @@ import {
 import OfferItem from './OfferItem';
 
 const OfferList = ({ offers, match: { params, path } }) => {
-
   //initial pagination settings
   const offersPerPage = 4;
   const [currentPage, setCurrentPage] = useState(1);

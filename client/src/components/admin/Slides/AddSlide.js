@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  Form,
+  Button, Form,
   FormGroup,
   Label,
   Input,
+  Modal,
+  ModalBody,
+  ModalHeader,
   CustomInput
 } from 'reactstrap';
 import { connect } from 'react-redux';
-import { addSlide } from '../actions/slideActions';
-import PropTypes from 'prop-types';
+import { addSlide } from '../../../actions/slideActions';
 
-const MainPageModal = ({ isAuthenticated, addSlide }) => {
-
+const AddSlide = ({ addSlide }) => {
   const [modal, setModal] = useState(false);
   const [imageData, setImageData] = useState(null);
   const [slideData, setSlideData] = useState({
     header: '',
     caption: ''
   })
-
 
   const toggle = () => {
     setModal(!modal);
@@ -46,7 +42,6 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
     newSlide.append('slide', imageData);
 
     const { header, caption } = slideData;
-
     newSlide.append('caption', caption);
     newSlide.append('header', header);
 
@@ -59,22 +54,16 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
   }
   return (
     <div>
-      {isAuthenticated ?
-        <Button
-          className="slide-modify"
-          style={{ marginLeft: "-3rem" }}
-          color="info"
-          size="lg"
-          onClick={toggle}
-        >+
+      <Button
+        color="info"
+        size="md"
+        onClick={toggle}
+      >Add slide
         </Button>
-        : null
-      }
 
       <Modal
         isOpen={modal}
         toggle={toggle}
-        className="open-offer-modal"
       >
         <ModalHeader toggle={toggle}>Add new slides</ModalHeader>
         <ModalBody>
@@ -91,13 +80,14 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
               <Label for="caption">Caption</Label>
               <Input
                 type="text"
-                name="caption" id="caption" placeholder="Add caption"
+                name="caption" id="caption" placeholder="Add caption..."
                 className="mb-3"
                 onChange={onChangeText}
               />
+
               <CustomInput
                 type="file"
-                name="slide" id="slide" label="Add slide image..."
+                name="slide" id="slide" label="Add image..."
                 onChange={onChangeImage}
               />
 
@@ -116,13 +106,10 @@ const MainPageModal = ({ isAuthenticated, addSlide }) => {
   );
 }
 
-MainPageModal.propTypes = {
-  isAuthenticated: PropTypes.bool
-}
-
-const mapStateToProps = state => ({
-  slide: state.slide,
-  isAuthenticated: state.auth.isAuthenticated
+const mapStateToProps = (state) => ({
+  slides: state.slide.slides
 });
-
-export default connect(mapStateToProps, { addSlide })(MainPageModal);
+export default connect(
+    mapStateToProps,
+    { addSlide }
+  )(AddSlide)

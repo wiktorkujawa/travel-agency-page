@@ -16,7 +16,6 @@ const GalleryItem = ({ photos: { description, tripLocation, image }, index, prev
         className="open-offer-modal"
         size="lg"
       >
-
         <ModalBody style={{ padding: "0", textAlign: "center" }}>
           <div style={{ position: "relative" }}>
             <img src={image} style={{ maxHeight: "70vh", minHeight: "30rem", objectFit: "fill", width: "100%" }} alt="" />
@@ -25,7 +24,6 @@ const GalleryItem = ({ photos: { description, tripLocation, image }, index, prev
           </div>
           <strong>{tripLocation}</strong> <br></br>
           <small className="text-muted">{description}</small>
-
         </ModalBody>
       </Modal>
 

@@ -17,7 +17,6 @@ import { clearErrors } from '../../actions/errorActions';
 import PropTypes from 'prop-types';
 
 const ChangePassword = ({ user, changePassword, error, clearErrors }) => {
-
   const [modal, setModal] = useState(false);
   const [enterPassword, setEnterPassword] = useState({
     oldPassword: '',
@@ -25,7 +24,6 @@ const ChangePassword = ({ user, changePassword, error, clearErrors }) => {
   });
   const [alertColor, setAlertColor] = useState(null);
   const [takeEmail, setTakeEmail] = useState(null);
-
   const [msg, setMsg] = useState(null);
 
   useEffect(() => {
@@ -53,7 +51,6 @@ const ChangePassword = ({ user, changePassword, error, clearErrors }) => {
       ...enterPassword,
       [e.target.name]: e.target.value
     });
-
   };
 
   const onSubmit = (event) => {
@@ -75,12 +72,11 @@ const ChangePassword = ({ user, changePassword, error, clearErrors }) => {
     changePassword(newUser);
   }
 
-
   return (
     <div>
       <NavLink onClick={toggle} href="#">
         Change password
-        </NavLink>
+      </NavLink>
 
       <Modal
         isOpen={modal}
@@ -96,18 +92,14 @@ const ChangePassword = ({ user, changePassword, error, clearErrors }) => {
               <Label for="oldPassword">Old password</Label>
               <Input
                 type="password"
-                name="oldPassword"
-                id="oldPassword"
-                placeholder="Insert old password..."
+                name="oldPassword" id="oldPassword" placeholder="Insert old password..."
                 onChange={onChange}
               />
 
               <Label for="newPassword">New password</Label>
               <Input
                 type="password"
-                name="newPassword"
-                id="newPassword"
-                placeholder="Insert new password..."
+                name="newPassword" id="newPassword" placeholder="Insert new password..."
                 onChange={onChange}
               />
               <Button

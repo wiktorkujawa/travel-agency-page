@@ -32,7 +32,6 @@ const OfferItem = ({ pathType, offerData: { _id, image, title, departureDate, pr
           <div style={{ textAlign: "end", margin: "auto 0" }}>{type.charAt(0).toUpperCase() + type.slice(1).replace(/-/g, ' ')}</div>
         </CardFooter>
       </NavLink>
-
     </Card>
   )
 }

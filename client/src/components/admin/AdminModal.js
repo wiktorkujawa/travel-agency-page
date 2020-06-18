@@ -11,11 +11,10 @@ import {
 
 import EditAbout from './EditAbout';
 import EditInsurance from './EditInsurance';
+import EditContact from './EditContact';
 
 import ChangeAnnouncements from './Announcements/ChangeAnnouncements';
 import AddAnnouncement from './Announcements/AddAnnouncement';
-
-// import EditFAQ from './EditFAQ';
 
 import ChangeQuestions from './FAQ/ChangeQuestions';
 import AddQuestion from './FAQ/AddQuestion';
@@ -23,8 +22,8 @@ import AddQuestion from './FAQ/AddQuestion';
 import ChangePhotos from './Gallery/ChangePhotos';
 import AddPhoto from './Gallery/AddPhoto';
 
-import EditContact from './EditContact';
-import EditSlide from './EditSlide';
+import ChangeSlides from './Slides/ChangeSlides';
+import AddSlide from './Slides/AddSlide';
 
 import ChangeOffers from './Offers/ChangeOffers';
 import AddOffer from './Offers/AddOffer';
@@ -102,7 +101,7 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
           match.params.type === "announcements" ? <AddAnnouncement /> :
             match.params.type === "faq" ? <AddQuestion /> :
               match.params.type === "gallery" ? <AddPhoto /> :
-                match.params.type === "slider" ? <EditSlide.AddSlide /> :
+                match.params.type === "slider" ? <AddSlide /> :
                   match.params.type === "tourist-trips" ? <AddOffer /> : 
                     null
           }
@@ -130,7 +129,7 @@ const AdminModal = ({ auth: { isAuthenticated, user }, match }) => {
           match.params.type === "faq" ? <ChangeQuestions /> :
             match.params.type === "gallery" ? <ChangePhotos /> :
               match.params.type === "contact" ? <EditContact /> :
-                match.params.type === "slider" ? <EditSlide.ChangeSlide /> :
+                match.params.type === "slider" ? <ChangeSlides /> :
                   match.params.type === "tourist-trips" ? <ChangeOffers /> : 
                     null
     }

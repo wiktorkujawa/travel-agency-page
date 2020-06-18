@@ -16,7 +16,6 @@ import PropTypes from 'prop-types';
 import { register } from '../../actions/authActions';
 import { clearErrors } from '../../actions/errorActions';
 const RegisterModal = ({ error, register, clearErrors }) => {
-
   const [modal, setModal] = useState(false);
   const [registerData, setRegisterData] = useState({
     name: '',
@@ -39,7 +38,6 @@ const RegisterModal = ({ error, register, clearErrors }) => {
     setModal(!modal);
     setMsg(null);
   };
-
 
   const onChange = e => {
     setRegisterData({
@@ -68,7 +66,6 @@ const RegisterModal = ({ error, register, clearErrors }) => {
     }
   }
 
-
   return (
     <div>
       <NavLink onClick={toggle} href="#">
@@ -89,9 +86,7 @@ const RegisterModal = ({ error, register, clearErrors }) => {
               <Label for="name">User name</Label>
               <Input
                 type="text"
-                name="name"
-                id="name"
-                placeholder="Insert user name..."
+                name="name" id="name" placeholder="Insert user name..."
                 className="mb-3"
                 onChange={onChange}
               />
@@ -99,9 +94,7 @@ const RegisterModal = ({ error, register, clearErrors }) => {
               <Label for="email">Email</Label>
               <Input
                 type="email"
-                name="email"
-                id="email"
-                placeholder="Insert email address..."
+                name="email" id="email" placeholder="Insert email address..."
                 className="mb-3"
                 onChange={onChange}
               />
@@ -109,9 +102,7 @@ const RegisterModal = ({ error, register, clearErrors }) => {
               <Label for="password">Password</Label>
               <Input
                 type="password"
-                name="password"
-                id="password"
-                placeholder="Insert password..."
+                name="password" id="password" placeholder="Insert password..."
                 className="mb-3"
                 onChange={onChange}
               />

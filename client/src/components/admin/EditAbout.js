@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button, Form,
   FormGroup,
@@ -22,11 +22,8 @@ const EditAbout = ({ getContent, contents, updateContent }) => {
     createArray();
   }, [contents]);
 
-
   const onChange = (event) => {
-
     const { name, value } = event.target;
-
     setContent(prev => ({
       ...prev, [name]: value
     }));
@@ -44,32 +41,27 @@ const EditAbout = ({ getContent, contents, updateContent }) => {
     }
   }
 
-
   return (
-
-    <Fragment>
+    <>
       {contents.map(({ _id, name }) => (
         <Form onSubmit={onSubmit(_id)}
         >
           <FormGroup>
             <Input
               type="textarea"
-              name="name"
-              id="content"
+              name="name" id="content" placeholder="Add content(using html allowed)"
               defaultValue={name}
-              placeholder="Add content(using html allowed)"
               onChange={onChange}
             />
             <Button
               color="dark"
-
               block>
               Change content
                 </Button>
           </FormGroup>
         </Form>
       ))}
-    </Fragment>
+    </>
 
   );
 }
