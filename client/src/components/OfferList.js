@@ -113,7 +113,7 @@ const OfferList = ({ offers, match: { params, path } }) => {
     <Container fluid={true} className="content-wrap" style={{ paddingLeft: "0", paddingRight: "0" }}>
       <div className="ml-2 mr-2">
         <NavLink className="item-main shadow-box mt-5 pl-2 pr-2" tag={RRNavLink} to={`${path.split(":", 1)}`}>
-          Wszystkie
+          All
         </NavLink>
         {navOffer}
       </div>
