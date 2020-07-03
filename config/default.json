@@ -1,0 +1,6 @@
+{
+  "mongoURI": "YourMongoUri",
+  "jwtSecret": "sl_myJwtSecret",
+  "email": "mailAddressForReceivingPassword",
+  "password": "PasswordForAboveMailAddress"
+}
