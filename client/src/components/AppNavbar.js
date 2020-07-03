@@ -16,6 +16,7 @@ import {
 import { connect } from 'react-redux';
 import { getContact } from '../actions/contactActions';
 import { getOffers } from '../actions/offerActions';
+import RegisterModal from './auth/RegisterModal'; 
 import PropTypes from 'prop-types';
 import {
   NavLink as RRNavLink
@@ -106,6 +107,14 @@ const AppNavbar = ({ getContact, getOffers, contacts, isAuthenticated }) => {
           FAQ
         </NavLink>
       </NavItem>
+
+
+      {/* If there's no user create it with uncommenting this component, which button will show in navbar and register user */}
+      {/* <NavItem className="ml-3">
+        <RegisterModal/>
+      </NavItem> */}
+
+
       {isAuthenticated ?
         <NavItem className="ml-3" style={{ backgroundColor: "red", borderRadius: "15px" }}>
           <NavLink tag={RRNavLink} to="/admin-modal" target={"_top"}>

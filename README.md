@@ -20,6 +20,10 @@ npm run server
 # Run the React client only
 npm run client
 
+# To create first user uncomment lines 113 to 115 in AppNavbar.js component and register the user
+
+# To login open CMS go to yourPageAddress/admin and login
+
 # Server runs on http://localhost:5000 and client on http://localhost:3000
 ```
 # Deployment
